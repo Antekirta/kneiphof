@@ -1,0 +1,31 @@
+{
+  "name": "sambia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "nanoevents": "^1.0.8",
+    "uniqid": "^5.0.3",
+    "vue": "^2.5.22",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.0.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.121",
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-typescript": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "redux": "^4.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "typescript": "^3.0.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
