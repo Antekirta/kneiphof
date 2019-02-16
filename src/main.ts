@@ -13,11 +13,15 @@ import {Person} from '@/entities/Person/Person';
 import {Food} from '@/entities/Food/Food';
 import {FishingHut} from '@/entities/Building/FishingHut';
 
-const myTribe = new Tribe('my-tribe');
+initGame();
 
-myTribe.addMember(new Person('Ingvar'));
+function initGame() {
+    const tribe = new Tribe('sambian');
 
-myTribe.fillFoodStorage([...Food.produceTurnip(1), ...Food.produceMeat(2)]);
+    tribe.addMember(new Person('Krivo Krivaitis'));
 
-new FishingHut('Fishing hut', 1).startUsing();
+    tribe.fillFoodStorage([...Food.produceTurnip(1), ...Food.produceMeat(2)]);
+
+    // new FishingHut('Fishing hut', 1).startUsing();
+}
 

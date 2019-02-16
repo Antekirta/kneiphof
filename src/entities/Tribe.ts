@@ -7,9 +7,11 @@ import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
 import {Food} from '@/entities/Food/Food';
 import {Person} from '@/entities/Person/Person';
-import {FILL_FOOD_STORAGE, SET_POPULATION} from '@/store/actions/actions';
+import {Resource} from '@/entities/Resource/Resource';
+import {FILL_FOOD_STORAGE, SET_POPULATION, SET_RESOURCE_STORAGE} from '@/store/actions/actions';
 
 class Tribe {
+    private resourceStorage: Resource[] = [];
     private foodStorage: Food[];
     private population: Person[];
 
@@ -53,6 +55,12 @@ class Tribe {
         this.population.splice(memberIndex, 1);
 
         store.dispatch({type: SET_POPULATION.type, population: this.population});
+    }
+
+    fillResourceStorage(resources: Resource[]) {
+        this.resourceStorage = this.resourceStorage.concat(resources);
+        
+        store.dispatch({type: SET_RESOURCE_STORAGE.type});
     }
 
     fillFoodStorage(food: Food[]) {
