@@ -1,13 +1,13 @@
 module.exports = {
-	configureWebpack: {
-		resolve: {
-			extensions: ['.js', '.ts', '.vue'],
-		},
+    configureWebpack: {
+        resolve: {
+            extensions: ['.js', '.ts', '.vue', '.styl']
+        },
 
-		devServer: {
-			watchOptions: {
-				poll: true
-			}
-		}
-	}
+        devServer: {
+            watchOptions: {
+                poll: true
+            }
+        }
+    }
 }

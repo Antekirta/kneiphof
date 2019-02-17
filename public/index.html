@@ -1,24 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible"
-		      content="IE=edge">
-		<meta name="viewport"
-		      content="width=device-width,initial-scale=1.0">
-		<link rel="icon"
-		      href="<%= BASE_URL %>favicon.ico">
-		<title>Vuex</title>
-	</head>
-	<body>
-		<noscript>
-			<strong>We're sorry but Vuex doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-		</noscript>
-		<div id="app"></div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0">
+    <link rel="icon"
+          href="<%= BASE_URL %>favicon.ico">
+    <title>Vuex</title>
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but Vuex doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app">
+    <div class="info-table">
+        <table>
+            <thead>
+            <tr>
+                <td colspan="2"><b>Ресурсы</b></td>
+            </tr>
+            </thead>
 
-		<button onclick="window.pause = true">Pause</button>
+            <tbody>
+            <tr>
+                <td>Дерево:</td>
+                <td id="info-table__wood">0</td>
+            </tr>
 
-		<button onclick="window.pause = false">Continue</button>
-		<!-- built files will be auto injected -->
-	</body>
+            <tr>
+                <td>Глина:</td>
+                <td id="info-table__clay">0</td>
+            </tr>
+
+            <tr>
+                <td>Камень:</td>
+                <td id="info-table__stone">0</td>
+            </tr>
+
+            <tr>
+                <td>Железо:</td>
+                <td id="info-table__iron">0</td>
+            </tr>
+
+            <tr>
+                <td>Янтарь:</td>
+                <td id="info-table__amber">0</td>
+            </tr>
+
+            <tr>
+                <td>Пушнина:</td>
+                <td id="info-table__fur">0</td>
+            </tr>
+            </tbody>
+
+            <tr>
+                <td><br></td>
+            </tr>
+            
+            <thead>
+            <tr>
+                <td colspan="2"><b>Еда</b></td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Мясо:</td>
+                <td id="info-table__meat">0</td>
+            </tr>
+
+            <tr>
+                <td>Рыба:</td>
+                <td id="info-table__fish">0</td>
+            </tr>
+
+            <tr>
+                <td>Репа:</td>
+                <td id="info-table__turnip">0</td>
+            </tr>
+
+            <tr>
+                <td>Хлеб:</td>
+                <td id="info-table__bread">0</td>
+            </tr>
+
+            <tr>
+                <td>Мука:</td>
+                <td id="info-table__flour">0</td>
+            </tr>
+
+            <tr>
+                <td>Пшеница:</td>
+                <td id="info-table__wheat">0</td>
+            </tr>
+            </tbody>
+
+            <tr>
+                <td><br></td>
+            </tr>
+
+            <thead>
+            <tr>
+                <td colspan="2"><b>Население</b></td>
+            </tr>
+            </thead>
+            
+            
+        </table>
+
+        <!--<table class="info-table__list" id="info-table-resources">-->
+        <!--<li class="info-table__item" id="info-table-row&#45;&#45;wood">-->
+        <!--<div class="info-table__label">Дерево</div>-->
+        <!--<div class="info-table__value"></div>-->
+        <!--</li>-->
+
+        <!--<li class="info-table__item" id="info-table-row&#45;&#45;clay">-->
+        <!--<div class="info-table__label">Глина</div>-->
+        <!--<div class="info-table__value"></div>-->
+        <!--</li>-->
+        <!--</table>-->
+
+        <!--<header class="info-table__header">Еда</header>-->
+    </div>
+</div>
+
+<div style="margin-top: 30px">
+    <button onclick="window.pause = true">Pause</button>
+
+    <button onclick="window.pause = false">Continue</button>
+</div>
+<!-- built files will be auto injected -->
+</body>
 </html>
