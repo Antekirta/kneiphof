@@ -1,5 +1,7 @@
 'use strict';
 
+import {RESOURCES} from '@/registry/RESOURCES';
+
 class Resource {
     constructor(public type: string) {
 
@@ -7,37 +9,37 @@ class Resource {
 
     static generateWood(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('wood');
+            return new Resource(RESOURCES.WOOD);
         });
     }
 
     static generateClay(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('clay');
+            return new Resource(RESOURCES.CLAY);
         });
     }
 
     static generateStone(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('stone');
+            return new Resource(RESOURCES.STONE);
         });
     }
 
     static generateIron(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('iron');
+            return new Resource(RESOURCES.IRON);
         });
     }
 
     static generateAmber(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('amber');
+            return new Resource(RESOURCES.AMBER);
         });
     }
 
     static generateFur(amount: number) {
         return [...Array(amount)].map(() => {
-            return new Resource('fur');
+            return new Resource(RESOURCES.FUR);
         });
     }
 }

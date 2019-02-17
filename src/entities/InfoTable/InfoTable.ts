@@ -1,7 +1,8 @@
 'use strict';
 
 import {store} from '@/store/store';
-import _find from 'lodash/find';
+import {FOOD} from '@/registry/FOOD';
+import {RESOURCES} from '@/registry/RESOURCES';
 
 class InfoTable {
     private elems: any;
@@ -9,21 +10,21 @@ class InfoTable {
     constructor(private root: any) {
         this.elems = {
             resources: {
-                wood: this.root.querySelector('#info-table__wood'),
-                clay: this.root.querySelector('#info-table__clay'),
-                stone: this.root.querySelector('#info-table__stone'),
-                iron: this.root.querySelector('#info-table__iron'),
-                amber: this.root.querySelector('#info-table__amber'),
-                fur: this.root.querySelector('#info-table__fur'),
+                [RESOURCES.WOOD]: this.root.querySelector('#info-table__wood'),
+                [RESOURCES.CLAY]: this.root.querySelector('#info-table__clay'),
+                [RESOURCES.STONE]: this.root.querySelector('#info-table__stone'),
+                [RESOURCES.IRON]: this.root.querySelector('#info-table__iron'),
+                [RESOURCES.AMBER]: this.root.querySelector('#info-table__amber'),
+                [RESOURCES.FUR]: this.root.querySelector('#info-table__fur'),
             },
 
             food: {
-                meat: this.root.querySelector('#info-table__meat'),
-                fish: this.root.querySelector('#info-table__fish'),
-                turnip: this.root.querySelector('#info-table__turnip'),
-                wheat: this.root.querySelector('#info-table__wheat'),
-                flour: this.root.querySelector('#info-table__flour'),
-                bread: this.root.querySelector('#info-table__bread'),
+                [FOOD.MEAT]: this.root.querySelector('#info-table__meat'),
+                [FOOD.FISH]: this.root.querySelector('#info-table__fish'),
+                [FOOD.TURNIP]: this.root.querySelector('#info-table__turnip'),
+                [FOOD.WHEAT]: this.root.querySelector('#info-table__wheat'),
+                [FOOD.FLOUR]: this.root.querySelector('#info-table__flour'),
+                [FOOD.BREAD]: this.root.querySelector('#info-table__bread'),
             }
         };
     }

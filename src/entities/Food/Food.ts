@@ -4,6 +4,7 @@ const uniqid = require('uniqid');
 
 import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
+import {FOOD} from '@/registry/FOOD';
 
 class Food {
     public id: string;
@@ -21,37 +22,37 @@ class Food {
 
     static produceMeat(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('meat', 1000, 5, 0);
+            return new Food(FOOD.MEAT, 1000, 5, 0);
         });
     }
 
     static produceFish(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('fish', 500, 3, 1);
+            return new Food(FOOD.FISH, 500, 3, 1);
         });
     }
 
     static produceTurnip(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('turnip', 200, 1, 2);
+            return new Food(FOOD.TURNIP, 200, 1, 2);
         });
     }
 
     static produceWheat(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('wheat', 10, 2, 100);
+            return new Food(FOOD.WHEAT, 10, 2, 100);
         });
     }
 
     static produceFlour(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('flour', 10, 5, 99);
+            return new Food(FOOD.FLOUR, 10, 5, 99);
         });
     }
 
     static produceBread(amount?: number) {
         return [...Array(amount)].map(item => {
-            return new Food('bread', 1000, 10, 2);
+            return new Food(FOOD.BREAD, 1000, 10, 2);
         });
     }
 }
