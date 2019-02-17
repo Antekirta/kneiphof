@@ -64,7 +64,7 @@ class Tribe {
     fillResourceStorage(resources: Resource[]) {
         this.resourceStorage = this.resourceStorage.concat(resources);
         
-        store.dispatch({type: SET_RESOURCE_STORAGE.type, food: this.foodStorage});
+        store.dispatch({type: SET_RESOURCE_STORAGE.type, resources: this.resourceStorage});
     }
 
     fillFoodStorage(food: Food[]) {

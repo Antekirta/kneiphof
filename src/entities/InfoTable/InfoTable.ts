@@ -46,7 +46,7 @@ class InfoTable {
 
         for (let key in this.elems.resources) {
             if (this.elems.resources.hasOwnProperty(key)) {
-                this.elems.resources[key].textContent = state.resourceStorage.filter((item: any) => item.name === key).length;
+                this.elems.resources[key].textContent = state.resourceStorage.filter((item: any) => item.type === key).length;
             }
         }
     }
