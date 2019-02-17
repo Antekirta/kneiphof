@@ -35,6 +35,10 @@ class Tribe {
         eventBus.on(EVENTS.CUSTOM.FOOD.REMOVE, (pieceOfFoodId: string) => {
             this.removeFood(pieceOfFoodId);
         });
+        
+        eventBus.on(EVENTS.CUSTOM.RESOURCE.PRODUCE, (resource: Resource[]) => {
+            this.fillResourceStorage(resource);
+        });
 
         eventBus.on(EVENTS.CUSTOM.PERSON.REQUEST_FOR_FOOD, (personId: string) => {
             this.feedMember(personId);
@@ -60,7 +64,7 @@ class Tribe {
     fillResourceStorage(resources: Resource[]) {
         this.resourceStorage = this.resourceStorage.concat(resources);
         
-        store.dispatch({type: SET_RESOURCE_STORAGE.type});
+        store.dispatch({type: SET_RESOURCE_STORAGE.type, food: this.foodStorage});
     }
 
     fillFoodStorage(food: Food[]) {

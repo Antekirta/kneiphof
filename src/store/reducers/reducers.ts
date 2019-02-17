@@ -60,7 +60,7 @@ export function foodStorage(state: [] = [], action: ACTIONS.IAction) {
 
 export function resourceStorage(state: [] = [], action: ACTIONS.IAction) {
     if (action.type === ACTIONS.SET_RESOURCE_STORAGE.type) {
-        return action.resources;
+        return action.resources || state;
     }
 
     return state;

@@ -12,8 +12,11 @@ import {Tribe} from '@/entities/Tribe';
 import {Person} from '@/entities/Person/Person';
 import {Food} from '@/entities/Food/Food';
 import {FishingHut} from '@/entities/Building/FishingHut';
+import {Sawmill} from '@/entities/Building/Sawmill';
 
 initGame();
+
+new Sawmill('Sawmill').startUsing();
 
 function initGame() {
     const tribe = new Tribe('sambian');

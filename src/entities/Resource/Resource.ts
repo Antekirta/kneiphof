@@ -5,28 +5,40 @@ class Resource {
 
     }
 
-    static generateWood() {
-        return new Resource('wood');
+    static generateWood(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('wood');
+        });
     }
 
-    static generateClay() {
-        return new Resource('clay');
+    static generateClay(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('clay');
+        });
     }
 
-    static generateStone() {
-        return new Resource('stone');
+    static generateStone(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('stone');
+        });
     }
 
-    static generateIron() {
-        return new Resource('amber');
+    static generateIron(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('iron');
+        });
     }
 
-    static generateAmber() {
-        return new Resource('clay');
+    static generateAmber(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('amber');
+        });
     }
 
-    static generateFur() {
-        return new Resource('fur');
+    static generateFur(amount: number) {
+        return [...Array(amount)].map(() => {
+            return new Resource('fur');
+        });
     }
 }
 
