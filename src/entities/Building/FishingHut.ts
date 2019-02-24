@@ -32,10 +32,6 @@ class FishingHut extends Building {
             const production = Food.produceFish(this.productivity);
 
             eventBus.emit(EVENTS.CUSTOM.FOOD.PRODUCE, production);
-
-            const state: any = store.getState();
-
-            console.log('state.foodStorage: ', state.foodStorage);
         }
     }
 }

@@ -6,7 +6,7 @@ import {EVENTS} from '@/registry/EVENTS';
 import {Resource} from '@/entities/Resource/Resource';
 import {store} from '@/store/store';
 
-class Sawmill extends Building {
+class ClayQuarry extends Building {
     constructor(public name: string,
                 private productivity: number = 1) {
         super(name);
@@ -28,11 +28,11 @@ class Sawmill extends Building {
 
     public produce() {
         if (this.isUsed) {
-            const production = Resource.generateWood(1);
-            
+            const production = Resource.generateClay(1);
+
             eventBus.emit(EVENTS.CUSTOM.RESOURCE.PRODUCE, production);
         }
     }
 }
 
-export {Sawmill};
+export {ClayQuarry};

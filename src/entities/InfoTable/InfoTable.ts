@@ -9,6 +9,13 @@ class InfoTable {
 
     constructor(private root: any) {
         this.elems = {
+            time: {
+                day: this.root.querySelector('#info-table__day'),
+                week: this.root.querySelector('#info-table__week'),
+                month: this.root.querySelector('#info-table__month'),
+                year: this.root.querySelector('#info-table__year'),
+            },
+            
             resources: {
                 [RESOURCES.WOOD]: this.root.querySelector('#info-table__wood'),
                 [RESOURCES.CLAY]: this.root.querySelector('#info-table__clay'),
@@ -38,6 +45,12 @@ class InfoTable {
     }
 
     renderData(state: any) {
+        for (let key in this.elems.time) {
+            if (this.elems.time.hasOwnProperty(key)) {
+                this.elems.time[key].textContent = parseInt(state[key]) + 1;
+            }
+        }
+        
         for (let key in this.elems.food) {
             if (this.elems.food.hasOwnProperty(key)) {
                 this.elems.food[key].textContent = state.foodStorage.filter((item: any) => item.name === key).length;

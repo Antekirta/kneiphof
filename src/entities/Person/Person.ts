@@ -51,8 +51,6 @@ class Person {
 
         console.log(`${this.name} eats.`);
         console.log(`${this.name}. Calories: ${this.calories}.`);
-
-        console.log(store.getState());
     }
 
     public killPerson() {
