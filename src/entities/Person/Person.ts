@@ -2,10 +2,12 @@
 
 const uniqid = require('uniqid');
 
-import {eventBus} from "@/utils/event-bus";
-import {EVENTS} from "@/registry/EVENTS";
-import {Food} from "@/entities/Food/Food";
-import {store} from "@/store/store";
+import {eventBus} from '@/utils/event-bus';
+import {EVENTS} from '@/registry/EVENTS';
+import {Food} from '@/entities/Food/Food';
+import {store} from '@/store/store';
+
+import {FOOD} from '@/registry/FOOD';
 
 class Person {
     public id: string;
@@ -28,7 +30,7 @@ class Person {
 
     private reduceCalories() {
         this.calories -= this.caloryConsumptionPerHour;
-        
+
         if (this.calories <= 0) {
             this.requestForFood();
 
@@ -43,7 +45,8 @@ class Person {
     }
 
     private requestForFood() {
-        eventBus.emit(EVENTS.CUSTOM.PERSON.REQUEST_FOR_FOOD, this.id);
+        // TODO Feed with different food types!!!
+        eventBus.emit(EVENTS.CUSTOM.PERSON.REQUEST_FOR_FOOD, this.id, FOOD.FISH);
     }
 
     public eat(pieceOfFood: Food) {

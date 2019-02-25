@@ -6,6 +6,7 @@ import {Building} from '@/entities/Building/Building';
 import {Food} from '@/entities/Food/Food';
 import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
+import {FOOD} from '@/registry/FOOD';
 
 class FishingHut extends Building {
     constructor(public name: string,
@@ -31,7 +32,7 @@ class FishingHut extends Building {
         if (this.isUsed) {
             const production = Food.produceFish(this.productivity);
 
-            eventBus.emit(EVENTS.CUSTOM.FOOD.PRODUCE, production);
+            eventBus.emit(EVENTS.CUSTOM.FOOD.PRODUCE, production, FOOD.FISH);
         }
     }
 }

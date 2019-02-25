@@ -16,8 +16,8 @@ class Food {
         this.id = this.name + uniqid();
     }
 
-    public removeFood() {
-        eventBus.emit(EVENTS.CUSTOM.FOOD.REMOVE, this.id);
+    public removeFood(foodType) {
+        eventBus.emit(EVENTS.CUSTOM.FOOD.REMOVE, this.id, foodType);
     }
 
     static produceMeat(amount?: number) {

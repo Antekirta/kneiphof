@@ -6,7 +6,7 @@ declare global {
     }
 }
 
-import Vue from 'vue';
+import Vue from 'vue'
 
 import('@/utils/global-clock');
 
@@ -29,7 +29,6 @@ new Vue({
 
 initGame();
 
-
 new Sawmill('Лесопилка').startUsing();
 new ClayQuarry('Глиняный карьер').startUsing();
 
@@ -37,9 +36,7 @@ function initGame() {
     const tribe = new Tribe('sambian');
 
     tribe.addMember(new Person('Krivo Krivaitis'));
-
-    tribe.fillFoodStorage([...Food.produceTurnip(1), ...Food.produceMeat(2)]);
-
+    
     new FishingHut('Fishing hut', 1).startUsing();
 }
 

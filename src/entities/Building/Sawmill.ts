@@ -4,6 +4,7 @@ import {Building} from '@/entities/Building/Building';
 import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
 import {Resource} from '@/entities/Resource/Resource';
+import {RESOURCES} from '@/registry/RESOURCES';
 import {store} from '@/store/store';
 
 class Sawmill extends Building {
@@ -30,7 +31,7 @@ class Sawmill extends Building {
         if (this.isUsed) {
             const production = Resource.generateWood(1);
             
-            eventBus.emit(EVENTS.CUSTOM.RESOURCE.PRODUCE, production);
+            eventBus.emit(EVENTS.CUSTOM.RESOURCE.PRODUCE, production, RESOURCES.WOOD);
         }
     }
 }
