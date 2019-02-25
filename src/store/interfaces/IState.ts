@@ -11,9 +11,15 @@ interface IState {
     day: number,
     hour: number,
 
-    tribePopulation: Person[],
-    foodStorage: Food[],
-    resourceStorage: Resource[]
+    population: Person[],
+
+    resources: {
+        [key: string]: Resource[]
+    },
+    
+    food: {
+        [key: string]: Food[]
+    }
 }
 
 export {IState};

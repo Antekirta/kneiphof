@@ -1,8 +1,14 @@
 'use strict';
 
 import {createStore, combineReducers} from 'redux';
-import * as reducers from './reducers/reducers';
-import {IState} from "@/store/interfaces/IState";
+
+import timeReducers from './reducers/time'
+import foodReducers from './reducers/food'
+import resourcesReducers from './reducers/resources'
+
+import {IState} from '@/store/interfaces/IState';
+import {RESOURCES} from '@/registry/RESOURCES';
+import {FOOD} from '@/registry/FOOD';
 
 const initialState: IState = {
     year: 0,
@@ -11,12 +17,30 @@ const initialState: IState = {
     day: 0,
     hour: 0,
 
-    tribePopulation: [],
+    population: [],
 
-    foodStorage: [],
+    resources: {
+        [RESOURCES.WOOD]: [],
+        [RESOURCES.CLAY]: [],
+        [RESOURCES.STONE]: [],
+        [RESOURCES.IRON]: [],
+        [RESOURCES.AMBER]: [],
+        [RESOURCES.FUR]: []
+    },
 
-    resourceStorage: []
+    food: {
+        [FOOD.MEAT]: [],
+        [FOOD.FISH]: [],
+        [FOOD.TURNIP]: [],
+        [FOOD.WHEAT]: [],
+        [FOOD.FLOUR]: [],
+        [FOOD.BREAD]: [],
+    }
 };
+
+const reducers = {...timeReducers, ...foodReducers, ...resourcesReducers};
+
+debugger
 
 const reducer = combineReducers<any>(reducers);
 

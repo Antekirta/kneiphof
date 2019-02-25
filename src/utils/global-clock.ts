@@ -1,10 +1,10 @@
 'use strict';
 
-import {TIME} from "@/registry/TIME";
-import {EVENTS} from "@/registry/EVENTS";
-import {store} from "@/store/store";
-import {eventBus} from "@/utils/event-bus";
-import {SET_DAY, SET_HOUR, SET_MONTH, SET_WEEK, SET_YEAR} from "@/store/actions/actions";
+import {TIME} from "@/registry/TIME"
+import {EVENTS} from "@/registry/EVENTS"
+import {store} from "@/store/store"
+import {eventBus} from "@/utils/event-bus"
+import timeActions from '../store/actions/time'
 
 class GlobalClock {
     private hoursPassed = 0;
@@ -22,11 +22,11 @@ class GlobalClock {
             if (!window.pause) {
                 this.hoursPassed++;
 
-                store.dispatch({type: SET_HOUR.type, value: this.hoursPassed});
-                store.dispatch({type: SET_DAY.type, value: this.daySinceStart()});
-                store.dispatch({type: SET_WEEK.type, value: this.weekSinceStart()});
-                store.dispatch({type: SET_MONTH.type, value: this.monthsSinceStart()});
-                store.dispatch({type: SET_YEAR.type, value: this.yearsSinceStart()});
+                store.dispatch({type: timeActions.SET_HOUR.type, value: this.hoursPassed});
+                store.dispatch({type:  timeActions.SET_DAY.type, value: this.daySinceStart()});
+                store.dispatch({type:  timeActions.SET_WEEK.type, value: this.weekSinceStart()});
+                store.dispatch({type:  timeActions.SET_MONTH.type, value: this.monthsSinceStart()});
+                store.dispatch({type:  timeActions.SET_YEAR.type, value: this.yearsSinceStart()});
 
                 eventBus.emit(EVENTS.CUSTOM.TIME.HOUR_PASSED);
                 

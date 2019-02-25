@@ -2,13 +2,15 @@
 
 import _findIndex from 'lodash/findIndex';
 
-import {store} from '@/store/store';
-import {eventBus} from '@/utils/event-bus';
-import {EVENTS} from '@/registry/EVENTS';
-import {Food} from '@/entities/Food/Food';
-import {Person} from '@/entities/Person/Person';
-import {Resource} from '@/entities/Resource/Resource';
-import {FILL_FOOD_STORAGE, SET_POPULATION, SET_RESOURCE_STORAGE} from '@/store/actions/actions';
+import {store} from '@/store/store'
+import {eventBus} from '@/utils/event-bus'
+import {EVENTS} from '@/registry/EVENTS'
+import {Food} from '@/entities/Food/Food'
+import {Person} from '@/entities/Person/Person'
+import {Resource} from '@/entities/Resource/Resource'
+import foodActions from '../store/actions/food'
+import resourcesActions from '../store/actions/resources'
+import populationActions from '../store/actions/population'
 
 class Tribe {
     private resourceStorage: Resource[] = [];
@@ -28,27 +30,27 @@ class Tribe {
             this.removeMember(personId);
         });
 
-        eventBus.on(EVENTS.CUSTOM.FOOD.PRODUCE, (food: Food[]) => {
-            this.fillFoodStorage(food);
+        eventBus.on(EVENTS.CUSTOM.FOOD.PRODUCE, (food: Food[], foodType: string) => {
+            this.fillFoodStorage(food, foodType);
         });
 
-        eventBus.on(EVENTS.CUSTOM.FOOD.REMOVE, (pieceOfFoodId: string) => {
-            this.removeFood(pieceOfFoodId);
+        eventBus.on(EVENTS.CUSTOM.FOOD.REMOVE, (pieceOfFoodId: string, foodType: string) => {
+            this.removeFood(pieceOfFoodId, foodType);
         });
         
-        eventBus.on(EVENTS.CUSTOM.RESOURCE.PRODUCE, (resource: Resource[]) => {
-            this.fillResourceStorage(resource);
+        eventBus.on(EVENTS.CUSTOM.RESOURCE.PRODUCE, (resource: Resource[], resourceType: string) => {
+            this.fillResourceStorage(resource, resourceType);
         });
 
-        eventBus.on(EVENTS.CUSTOM.PERSON.REQUEST_FOR_FOOD, (personId: string) => {
-            this.feedMember(personId);
+        eventBus.on(EVENTS.CUSTOM.PERSON.REQUEST_FOR_FOOD, (personId: string, foodType: string) => {
+            this.feedMember(personId, foodType);
         });
     }
 
     addMember(member: Person) {
         this.population.push(member);
 
-        store.dispatch({type: SET_POPULATION.type, population: this.population});
+        store.dispatch({type: populationActions.population.type, value: this.population});
     }
 
     private removeMember(memberId: string) {
@@ -58,34 +60,34 @@ class Tribe {
 
         this.population.splice(memberIndex, 1);
 
-        store.dispatch({type: SET_POPULATION.type, population: this.population});
+        store.dispatch({type: populationActions.population.type, value: this.population});
     }
 
-    fillResourceStorage(resources: Resource[]) {
+    fillResourceStorage(resources: Resource[], resourceType: string) {
         this.resourceStorage = this.resourceStorage.concat(resources);
         
-        store.dispatch({type: SET_RESOURCE_STORAGE.type, resources: this.resourceStorage});
+        store.dispatch({type: resourcesActions[resourceType].type, value: this.resourceStorage});
     }
 
-    fillFoodStorage(food: Food[]) {
+    fillFoodStorage(food: Food[], foodType: string) {
         this.foodStorage = this.foodStorage.concat(food).sort((a, b) => a.eatingPriority - b.eatingPriority);
 
-        store.dispatch({type: FILL_FOOD_STORAGE.type, food: this.foodStorage});
+        store.dispatch({type: foodActions[foodType].type, value: this.foodStorage});
     }
 
-    private removeFood(pieceOfFoodId: string) {
+    private removeFood(pieceOfFoodId: string, foodType: string) {
         const foodIndex = _findIndex(this.foodStorage, pieceOfFood => {
             return pieceOfFood.id === pieceOfFoodId;
         });
 
         const pieceOfFood = this.foodStorage.splice(foodIndex, 1);
 
-        store.dispatch({type: FILL_FOOD_STORAGE.type, population: this.foodStorage});
+        store.dispatch({type: foodActions[foodType].type, value: this.foodStorage});
 
         return pieceOfFood[0];
     }
 
-    public feedMember(memberId: string) {
+    public feedMember(memberId: string, foodType: string) {
         const memberIndex = _findIndex(this.population, member => {
             return member.id === memberId;
         });
@@ -96,7 +98,7 @@ class Tribe {
             return console.error('There is no food left!');
         }
 
-        const pieceOfFood = this.removeFood(topPieceOfFood.id);
+        const pieceOfFood = this.removeFood(topPieceOfFood.id, foodType);
 
         this.population[memberIndex].eat(pieceOfFood);
     }

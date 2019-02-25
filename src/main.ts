@@ -6,7 +6,7 @@ declare global {
     }
 }
 
-import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 
 import('@/utils/global-clock');
 
