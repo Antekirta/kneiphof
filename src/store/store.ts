@@ -20,28 +20,22 @@ const initialState: IState = {
 
     population: [],
 
-    resources: {
-        [RESOURCES.WOOD]: [],
-        [RESOURCES.CLAY]: [],
-        [RESOURCES.STONE]: [],
-        [RESOURCES.IRON]: [],
-        [RESOURCES.AMBER]: [],
-        [RESOURCES.FUR]: []
-    },
+    [RESOURCES.WOOD]: [],
+    [RESOURCES.CLAY]: [],
+    [RESOURCES.STONE]: [],
+    [RESOURCES.IRON]: [],
+    [RESOURCES.AMBER]: [],
+    [RESOURCES.FUR]: [],
 
-    food: {
-        [FOOD.MEAT]: [],
-        [FOOD.FISH]: [],
-        [FOOD.TURNIP]: [],
-        [FOOD.WHEAT]: [],
-        [FOOD.FLOUR]: [],
-        [FOOD.BREAD]: [],
-    }
+    [FOOD.MEAT]: [],
+    [FOOD.FISH]: [],
+    [FOOD.TURNIP]: [],
+    [FOOD.WHEAT]: [],
+    [FOOD.FLOUR]: [],
+    [FOOD.BREAD]: [],
 };
 
 const reducers = {...timeReducers, ...foodReducers, ...resourcesReducers, ...populationReducers};
-
-debugger
 
 const reducer = combineReducers<any>(reducers);
 

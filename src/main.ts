@@ -29,8 +29,7 @@ new Vue({
 
 initGame();
 
-new Sawmill('Лесопилка').startUsing();
-new ClayQuarry('Глиняный карьер').startUsing();
+new Sawmill('Лесопилка').startUsing()
 
 function initGame() {
     const tribe = new Tribe('sambian');

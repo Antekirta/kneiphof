@@ -13,8 +13,8 @@ import resourcesActions from '../store/actions/resources'
 import populationActions from '../store/actions/population'
 
 class Tribe {
-    private resourceStorage: Resource[] = [];
-    private foodStorage: Food[];
+    private resourceStorage: any = {};
+    private foodStorage:any = {};
     private population: Person[];
 
     constructor(public name: string) {
@@ -64,9 +64,13 @@ class Tribe {
     }
 
     fillResourceStorage(resources: Resource[], resourceType: string) {
-        this.resourceStorage = this.resourceStorage.concat(resources);
+        if (!this.resourceStorage[resourceType] || !this.resourceStorage[resourceType].length) {
+            this.resourceStorage[resourceType] = [];
+        }
         
-        store.dispatch({type: resourcesActions[resourceType].type, value: this.resourceStorage});
+        this.resourceStorage[resourceType] = this.resourceStorage[resourceType].concat(resources);
+        
+        store.dispatch({type: resourcesActions[resourceType].type, value: this.resourceStorage[resourceType]});
     }
 
     fillFoodStorage(food: Food[], foodType: string) {
