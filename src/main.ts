@@ -6,6 +6,8 @@ declare global {
     }
 }
 
+import Vue from 'vue/dist/vue.js';
+
 import('@/utils/global-clock');
 
 import {Tribe} from '@/entities/Tribe';
@@ -15,9 +17,18 @@ import {FishingHut} from '@/entities/Building/FishingHut';
 import {Sawmill} from '@/entities/Building/Sawmill';
 import {ClayQuarry} from '@/entities/Building/ClayQuarry';
 
-import {infoTable} from '@/entities/InfoTable/InfoTable';
+// import {infoTable} from '@/entities/InfoTable/InfoTable';
+
+import infoTable from './entities/InfoTable/InfoTable.vue'
+
+new Vue({
+    el: '#app',
+
+    components: {infoTable}
+});
 
 initGame();
+
 
 new Sawmill('Лесопилка').startUsing();
 new ClayQuarry('Глиняный карьер').startUsing();
@@ -30,7 +41,5 @@ function initGame() {
     tribe.fillFoodStorage([...Food.produceTurnip(1), ...Food.produceMeat(2)]);
 
     new FishingHut('Fishing hut', 1).startUsing();
-    
-    infoTable.init();
 }
 
