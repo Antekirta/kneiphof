@@ -4,6 +4,11 @@ import {IAction} from '@/store/actions/IAction'
 import {RESOURCES} from '@/registry/RESOURCES'
 
 export default {
+    resources: <IAction> {
+        type: 'resources',
+        value: 0
+    },
+
     [RESOURCES.WOOD]: <IAction> {
         type: RESOURCES.WOOD,
         value: 0

@@ -5,6 +5,7 @@ import {createStore, combineReducers} from 'redux';
 import timeReducers from './reducers/time'
 import foodReducers from './reducers/food'
 import resourcesReducers from './reducers/resources'
+import populationReducers from './reducers/population'
 
 import {IState} from '@/store/interfaces/IState';
 import {RESOURCES} from '@/registry/RESOURCES';
@@ -38,7 +39,7 @@ const initialState: IState = {
     }
 };
 
-const reducers = {...timeReducers, ...foodReducers, ...resourcesReducers};
+const reducers = {...timeReducers, ...foodReducers, ...resourcesReducers, ...populationReducers};
 
 debugger
 

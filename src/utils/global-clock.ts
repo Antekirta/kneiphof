@@ -22,11 +22,11 @@ class GlobalClock {
             if (!window.pause) {
                 this.hoursPassed++;
 
-                store.dispatch({type: timeActions.SET_HOUR.type, value: this.hoursPassed});
-                store.dispatch({type:  timeActions.SET_DAY.type, value: this.daySinceStart()});
-                store.dispatch({type:  timeActions.SET_WEEK.type, value: this.weekSinceStart()});
-                store.dispatch({type:  timeActions.SET_MONTH.type, value: this.monthsSinceStart()});
-                store.dispatch({type:  timeActions.SET_YEAR.type, value: this.yearsSinceStart()});
+                store.dispatch({type: timeActions.hour.type, value: this.hoursPassed});
+                store.dispatch({type:  timeActions.day.type, value: this.daySinceStart()});
+                store.dispatch({type:  timeActions.week.type, value: this.weekSinceStart()});
+                store.dispatch({type:  timeActions.month.type, value: this.monthsSinceStart()});
+                store.dispatch({type:  timeActions.year.type, value: this.yearsSinceStart()});
 
                 eventBus.emit(EVENTS.CUSTOM.TIME.HOUR_PASSED);
                 

@@ -4,6 +4,11 @@ import {IAction} from '@/store/actions/IAction';
 import {FOOD} from '@/registry/FOOD';
 
 export default {
+    'food': <IAction> {
+        type: 'food',
+        value: 0
+    },
+    
     [FOOD.MEAT]: <IAction> {
         type: FOOD.MEAT,
         value: 0

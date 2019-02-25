@@ -1,28 +1,28 @@
 import {IAction} from '@/store/actions/IAction'
 
 export default {
-    SET_HOUR: <IAction> {
-        type: 'SET_HOUR',
+    hour: <IAction> {
+        type: 'hour',
         value: 0
     },
 
-    SET_DAY: <IAction>  {
-        type: 'SET_DAY',
+    day: <IAction>  {
+        type: 'day',
         value: 0
     },
 
-    SET_WEEK: <IAction>  {
-        type: 'SET_WEEK',
+    week: <IAction>  {
+        type: 'week',
         value: 0
     },
 
-    SET_MONTH: <IAction>  {
-        type: 'SET_MONTH',
+    month: <IAction>  {
+        type: 'month',
         value: 0
     },
 
-    SET_YEAR: <IAction>  {
-        type: 'SET_YEAR',
+    year: <IAction>  {
+        type: 'year',
         value: 0
     },
 }
