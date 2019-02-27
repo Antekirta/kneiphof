@@ -131,7 +131,7 @@
 
 <style lang="stylus">
     .info-table
-        width: 300px
+        width: 100%
         padding: 15px
         border: solid 2px #222
 
@@ -141,12 +141,15 @@
             font-weight: 600
 
         &__list
-            padding: 15px
+            padding: 10px 0
             margin: 0
 
         &__item
             display: flex
-            justify-content: flex-start
+            justify-content: space-between
+            
+         &__item-label
+             width: 70px
 
         &__item-value
             margin-left: 15px

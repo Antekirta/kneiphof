@@ -8,6 +8,10 @@ declare global {
 
 import Vue from 'vue'
 
+// styles
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './styles/app.styl'
+
 import('@/utils/global-clock');
 
 import {Tribe} from '@/entities/Tribe';
@@ -20,11 +24,12 @@ import {ClayQuarry} from '@/entities/Building/ClayQuarry';
 // import {infoTable} from '@/entities/InfoTable/InfoTable';
 
 import infoTable from './entities/InfoTable/InfoTable.vue'
+import LocalMap from './entities/LocalMap/LocalMap.vue'
 
 new Vue({
     el: '#app',
 
-    components: {infoTable}
+    components: {infoTable, LocalMap}
 });
 
 initGame();
@@ -33,11 +38,11 @@ function initGame() {
     const tribe = new Tribe('sambian');
 
     tribe.addMember(new Person('Krivo Krivaitis'));
-    
+
     new FishingHut('Fishing hut', 1).startUsing();
 
     new Sawmill('Лесопилка').startUsing()
-    
+
     new ClayQuarry('Глиняный карьер').startUsing()
 }
 
