@@ -34,7 +34,7 @@ class GlobalClock {
                     eventBus.emit(EVENTS.CUSTOM.TIME.SIX_HOURS_PASSED);
                 }
             }
-        }, 100)
+        }, 1000) 
     }
 
     daySinceStart(): number {
