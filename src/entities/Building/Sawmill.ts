@@ -10,12 +10,12 @@ import {store} from '@/store/store';
 class Sawmill extends Building {
     constructor(public name: string,
                 private productivity: number = 1) {
-        super(name);
+        super(name, {width: 5, height: 5}, {x: 50, y: 70});
 
         this.init();
     }
 
-    private init() {
+    private init() {        
         eventBus.on(EVENTS.CUSTOM.TIME.SIX_HOURS_PASSED, this.produce.bind(this));
     }
 

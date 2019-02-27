@@ -10,7 +10,7 @@ import {store} from '@/store/store';
 class ClayQuarry extends Building {
     constructor(public name: string,
                 private productivity: number = 1) {
-        super(name);
+        super(name, {width: 5, height: 5}, {x: 300, y: 270});
 
         this.init();
     }

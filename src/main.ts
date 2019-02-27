@@ -39,7 +39,7 @@ function initGame() {
 
     tribe.addMember(new Person('Krivo Krivaitis'));
 
-    new FishingHut('Fishing hut', 1).startUsing();
+    // new FishingHut('Fishing hut', 1).startUsing();
 
     new Sawmill('Лесопилка').startUsing()
 

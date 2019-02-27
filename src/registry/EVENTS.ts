@@ -6,6 +6,10 @@ const EVENTS = {
     },
 
     CUSTOM: {
+        BUILDING: {
+            ERECTED: 'building-erected'
+        },
+        
         FOOD: {
             REMOVE: 'food-remove',
 
