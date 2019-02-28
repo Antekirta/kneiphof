@@ -34,15 +34,19 @@ new Vue({
 
 initGame();
 
+setTimeout(() => {
+    new Sawmill('Лесопилка').startUsing()
+}, 3000)
+
+setTimeout(() => {
+    new ClayQuarry('Глиняный карьер').startUsing()
+}, 7000)
+
 function initGame() {
     const tribe = new Tribe('sambian');
 
     tribe.addMember(new Person('Krivo Krivaitis'));
 
     // new FishingHut('Fishing hut', 1).startUsing();
-
-    new Sawmill('Лесопилка').startUsing()
-
-    new ClayQuarry('Глиняный карьер').startUsing()
 }
 

@@ -68,6 +68,7 @@
         width: 1000px
         height: 1000px
         outline: solid 2px #222
+        background-image: url('/grass.jpg')
 
         &__grid
             position: relative
@@ -87,7 +88,8 @@
             align-items: center
             overflow: hidden
             padding: 2px
-            background-color: brown
+            background-image: url('/images/icons/buildings/sawmill.png')
+            background-size: cover
             transition: .2s
             text-align: center
             text-transform: uppercase
