@@ -1,5 +1,3 @@
-'use strict';
-
 declare global {
     interface Window {
         pause: boolean;
@@ -12,41 +10,18 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/app.styl'
 
+// utils
 import('@/utils/global-clock');
 
-import {Tribe} from '@/entities/Tribe';
-import {Person} from '@/entities/Person/Person';
-import {Food} from '@/entities/Food/Food';
-import {FishingHut} from '@/entities/Building/FishingHut';
-import {Sawmill} from '@/entities/Building/Sawmill';
-import {ClayQuarry} from '@/entities/Building/ClayQuarry';
+// entities
+import {Mammal} from '@/entities/Being/Mammal';
 
-// import {infoTable} from '@/entities/InfoTable/InfoTable';
+const dog = Mammal.createDog('Zigmund')
 
-import infoTable from './entities/InfoTable/InfoTable.vue'
-import LocalMap from './entities/LocalMap/LocalMap.vue'
+dog.place(100, 150)
+
+console.log(dog);
 
 new Vue({
-    el: '#app',
-
-    components: {infoTable, LocalMap}
+    el: '#app'
 });
-
-initGame();
-
-setTimeout(() => {
-    new Sawmill('Лесопилка').startUsing()
-}, 3000)
-
-setTimeout(() => {
-    new ClayQuarry('Глиняный карьер').startUsing()
-}, 7000)
-
-function initGame() {
-    const tribe = new Tribe('sambian');
-
-    tribe.addMember(new Person('Krivo Krivaitis'));
-
-    // new FishingHut('Fishing hut', 1).startUsing();
-}
-
