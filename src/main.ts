@@ -13,14 +13,13 @@ import './styles/app.styl'
 // utils
 import('@/utils/global-clock');
 
+// Map
+import {localMap} from '@/entities/Map/LocalMap';
+
 // entities
 import {Mammal} from '@/entities/Being/Mammal';
 
-const dog = Mammal.createDog('Zigmund')
-
-dog.place(100, 150)
-
-console.log(dog);
+localMap.getCellsCoords(2000, 320)
 
 new Vue({
     el: '#app'
