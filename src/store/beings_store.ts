@@ -1,7 +1,11 @@
 import {MAMMALS} from '@/registry/BEINGS/MAMMALS'
-import {IStore} from '@/store/IStore';
+import {Mammal} from '@/entities/Being/Mammal';
 
-const _BEINGS_STORE_: IStore = {}
+interface IBeingStore {
+    [index: string]: Array<Mammal>
+}
+
+const _BEINGS_STORE_: IBeingStore = {}
 
 Object.keys(MAMMALS).forEach((key: string) => {
     _BEINGS_STORE_[key] = []

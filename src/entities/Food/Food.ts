@@ -18,7 +18,7 @@ class Food {
                 public shelfLife: number) {
         this.name = this.name.toUpperCase()
         
-        putInStorage(_FOOD_STORE_[this.name], this.id)
+        putInStorage(_FOOD_STORE_[this.name], this)
 
         this.unbindEvent = eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, () => {
             this.hoursExpired++
@@ -30,7 +30,7 @@ class Food {
     }
 
     rot() {
-        removeFromStorage(_FOOD_STORE_[this.name], this.id)
+        removeFromStorage(_FOOD_STORE_[this.name], this)
 
         console.log(`${this.name} has rotten!`)
 
@@ -38,7 +38,7 @@ class Food {
     }
     
     static createBeef () {
-        return new Food(FOOD.BEEF.value, 2000, 10, 2)
+        return new Food(FOOD.BEEF.value, 2000, 10, 48)
     }
 }
 

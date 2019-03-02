@@ -5,6 +5,8 @@ import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
 import {MAMMALS} from '@/registry/BEINGS/MAMMALS';
 import {_BEINGS_STORE_} from '@/store/beings_store';
+import {_FOOD_STORE_} from '@/store/food_store';
+import {FOOD} from '@/registry/FOOD/FOOD';
 
 type furType = 'thin' | 'thick' | 'none'
 type dietType = 'predator' | 'herbivore' | 'omnivorous'
@@ -26,42 +28,47 @@ class Mammal {
                 private legsCount: number,
                 private fur: furType,
                 private horns: number,
-                private dietType: dietType) {
+                private dietType: dietType,
+                private foodPreferences: Array<string>) {
         this.species = this.species.toUpperCase()
-        
-        putInStorage(_BEINGS_STORE_[this.species], this.id)
-        
+
+        putInStorage(_BEINGS_STORE_[this.species], this)
+
         eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
     }
-    
-    private controlCalories () {
+
+    private controlCalories() {
         this.calories -= this.caloriesPerHour
-        
+
         if (this.calories < 0) {
             this.findFood()
         }
-        
-        if (this.calories <= - 500) {
+
+        if (this.calories <= -500) {
             if (this.strength > 0) {
                 this.strength--
             }
         }
-        
+
         if (this.calories <= -1000) {
             this.die()
         }
     }
-    
-    private findFood () {
+
+    private findFood() {
         console.log(`${this.name} the ${this.species} is trying to get some food`)
     }
     
-    private die () {
-        removeFromStorage(_BEINGS_STORE_[this.species], this.id)
+    private eat() {
         
+    }
+
+    private die() {
+        removeFromStorage(_BEINGS_STORE_[this.species], this)
+
         console.log(`${this.name} the ${this.species} is dead`)
     }
-    
+
     static [MAMMALS.DOG](name: string) {
         return new Mammal(
             name,
@@ -80,7 +87,8 @@ class Mammal {
             'thin',
             0,
 
-            'predator'
+            'predator',
+            [FOOD.BEEF.value, FOOD.CHICKEN.value, FOOD.DEER_MEAT.label, FOOD.HORSE_MEAT.value, FOOD.PORK.value]
         )
     }
 }

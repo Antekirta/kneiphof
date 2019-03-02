@@ -1,7 +1,11 @@
 import {FOOD} from '@/registry/FOOD/FOOD'
-import {IStore} from '@/store/IStore';
+import {Food} from '@/entities/Food/Food';
 
-const _FOOD_STORE_: IStore = {};
+interface IFoodStore {
+    [index: string]: Array<Food>
+}
+
+const _FOOD_STORE_: IFoodStore = {};
 
 Object.keys(FOOD).forEach((key: string) => {
     _FOOD_STORE_[key] = []
