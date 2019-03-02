@@ -1,15 +1,16 @@
-const _remove: any = import('lodash/remove')
+import {generateId} from '@/utils/generate-id';
+import {putInStorage, removeFromStorage} from '@/utils/storage-utils';
 
 import {eventBus} from '@/utils/event-bus';
 import {EVENTS} from '@/registry/EVENTS';
 import {MAMMALS} from '@/registry/BEINGS/MAMMALS';
-import {_BEINGS_STORE} from '@/store/beings';
+import {_BEINGS_STORE_} from '@/store/beings_store';
 
 type furType = 'thin' | 'thick' | 'none'
 type dietType = 'predator' | 'herbivore' | 'omnivorous'
 
 class Mammal {
-    public id: string = 'mammal' + Math.random() + new Date().getTime()
+    public id: string = generateId('Mammal')
     private calories: number = 2000
 
     constructor(private name: string,
@@ -26,7 +27,7 @@ class Mammal {
                 private fur: furType,
                 private horns: number,
                 private dietType: dietType) {
-        _BEINGS_STORE.MAMMALS[this.species].push(this.id)
+        putInStorage(_BEINGS_STORE_.MAMMALS[this.species], this.id)
         
         eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
     }
@@ -54,7 +55,7 @@ class Mammal {
     }
     
     private die () {
-        _remove(_BEINGS_STORE.MAMMALS[this.species], (id: string) => id === this.id)
+        removeFromStorage(_BEINGS_STORE_.MAMMALS[this.species], this.id)
         
         console.log(`${this.name} the ${this.species} is dead`)
     }
