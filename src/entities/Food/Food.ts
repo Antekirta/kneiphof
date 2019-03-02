@@ -38,7 +38,7 @@ class Food {
     }
     
     static createBeef () {
-        return new Food(FOOD.BEEF, 2000, 10, 2)
+        return new Food(FOOD.BEEF.value, 2000, 10, 2)
     }
 }
 

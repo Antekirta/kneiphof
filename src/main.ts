@@ -10,6 +10,9 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/app.styl'
 
+// vue-components
+import FoodStorage from './vue-components/FoodStorage.vue'
+
 // store
 import {_BEINGS_STORE_} from '@/store/beings_store'
 import {_FOOD_STORE_} from '@/store/food_store'
@@ -34,5 +37,9 @@ setTimeout(() => {
 }, 15000)
 
 new Vue({
-    el: '#app'
+    el: '#app',
+
+    components: {
+        FoodStorage
+    }
 });

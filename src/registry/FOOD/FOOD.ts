@@ -1,11 +1,33 @@
 const FOOD = {
     // meat
-    BEEF: 'beef',
-    CHICKEN: 'chicken',
-    DEER_MEAT: 'deer meat',
-    DOG_MEAT: 'dog meat',
-    HORSE_MEAT: 'horse meat',
-    PORK: 'pork',
+    BEEF: {
+        value: 'BEEF',
+        label: 'Говядина'
+    },
+    CHICKEN: {
+        value: 'CHICKEN',
+        label: 'Курица'
+    },
+    
+    DEER_MEAT: {
+        value: 'DEER_MEAT',
+        label: 'Оленина'
+    },
+    
+    DOG_MEAT: {
+        value: 'DOG_MEAT',
+        label: 'Собачатина'
+    },
+    
+    HORSE_MEAT: {
+        value: 'HORSE_MEAT',
+        label: 'Конина'
+    },
+    
+    PORK: {
+        value: 'PORK',
+        label: 'Свинина'
+    },
 }
 
 Object.freeze(FOOD)
