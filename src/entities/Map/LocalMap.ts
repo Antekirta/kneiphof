@@ -5,7 +5,7 @@ interface Cell {
 
 class LocalMap {
     public occupiedCells = new Map()
-    
+
     constructor(private width: number = 2000,
                 private height: number = 1000,
                 private cellSize: number = 10) {
@@ -27,16 +27,20 @@ class LocalMap {
             y: Math.floor(coords.y / this.cellSize)
         }
     }
-    
-    occupyCell (cell: Cell, occupant: any) {
+
+    occupyCell(cell: Cell, occupant: any) {
+        if (this.isCellOccupied(cell)) {
+            return this.getCellOccupant(cell)
+        }
+        
         this.occupiedCells.set(cell, occupant)
     }
-    
-    isCellOccupied (cell: Cell): boolean {
+
+    isCellOccupied(cell: Cell): boolean {
         return this.occupiedCells.has(cell)
     }
-    
-    getCellOccupant (cell: Cell): any {
+
+    getCellOccupant(cell: Cell): any {
         return this.occupiedCells.get(cell)
     }
 }

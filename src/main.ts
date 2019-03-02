@@ -1,6 +1,6 @@
 declare global {
     interface Window {
-        pause: boolean;
+        pause: boolean
     }
 }
 
@@ -10,16 +10,14 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/app.styl'
 
-// utils
-import('@/utils/global-clock');
+// registry
 
-// Map
-import {localMap} from '@/entities/Map/LocalMap';
+// utils
+import('@/utils/global-clock')
 
 // entities
-import {Mammal} from '@/entities/Being/Mammal';
+import {Mammal} from '@/entities/Being/Mammal'
 
-localMap.getCellsCoords(2000, 320)
 
 new Vue({
     el: '#app'

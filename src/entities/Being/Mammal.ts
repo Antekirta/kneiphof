@@ -1,10 +1,16 @@
+const _remove: any = import('lodash/remove')
+
+import {eventBus} from '@/utils/event-bus';
+import {EVENTS} from '@/registry/EVENTS';
+import {MAMMALS} from '@/registry/BEINGS/MAMMALS';
+import {_BEINGS_STORE} from '@/store/beings';
+
 type furType = 'thin' | 'thick' | 'none'
 type dietType = 'predator' | 'herbivore' | 'omnivorous'
 
 class Mammal {
-    private calories = 2000
-    x = 0
-    y = 0
+    public id: string = 'mammal' + Math.random() + new Date().getTime()
+    private calories: number = 2000
 
     constructor(private name: string,
                 private species: string,
@@ -20,17 +26,43 @@ class Mammal {
                 private fur: furType,
                 private horns: number,
                 private dietType: dietType) {
+        _BEINGS_STORE.MAMMALS[this.species].push(this.id)
+        
+        eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
     }
     
-    place (x: number, y: number) {
-        this.x = x
-        this.y = y
+    private controlCalories () {
+        this.calories -= this.caloriesPerHour
+        
+        if (this.calories < 0) {
+            this.findFood()
+        }
+        
+        if (this.calories <= - 500) {
+            if (this.strength > 0) {
+                this.strength--
+            }
+        }
+        
+        if (this.calories <= -1000) {
+            this.die()
+        }
     }
-
-    static createDog(name: string) {
+    
+    private findFood () {
+        console.log(`${this.name} the ${this.species} is trying to get some food`)
+    }
+    
+    private die () {
+        _remove(_BEINGS_STORE.MAMMALS[this.species], (id: string) => id === this.id)
+        
+        console.log(`${this.name} the ${this.species} is dead`)
+    }
+    
+    static [MAMMALS.DOG](name: string) {
         return new Mammal(
             name,
-            'dog',
+            MAMMALS.DOG,
 
             30,
             0.4,

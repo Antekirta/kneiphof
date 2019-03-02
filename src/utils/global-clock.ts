@@ -3,6 +3,8 @@
  */
 
 import {TIME} from '@/registry/TIME/TIME';
+import {EVENTS} from '@/registry/EVENTS';
+import {eventBus} from '@/utils/event-bus';
 
 class GlobalClock {
     public hoursPassed = 0
@@ -15,8 +17,14 @@ class GlobalClock {
         setInterval(() => {
             if (!window.pause) {
                 this.hoursPassed++;
+                
+                eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED)
+                
+                if (this.hoursPassed % 6 === 0) {
+                    eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED)
+                }
             }
-        }, 1000)
+        }, 100)
     }
 
     daySinceStart(): number {
