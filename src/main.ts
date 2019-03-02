@@ -30,11 +30,7 @@ import {Mammal} from '@/entities/Being/Mammal'
 
 Food.createBeef()
 
-console.log('_FOOD_STORE_: ', _FOOD_STORE_);
-
-setTimeout(() => {
-    console.log('_FOOD_STORE_: ', _FOOD_STORE_);
-}, 15000)
+Mammal.createDog('Zigmund')
 
 new Vue({
     el: '#app',

@@ -10,5 +10,5 @@ export const putInStorage = function (storage: Array<storageItem>, id: storageIt
 }
 
 export const removeFromStorage = function (storage: Array<storageItem>, itemToDelete: storageItem) {
-    _remove(storage, (id: string) => id === itemToDelete.id)
+    _remove(storage, (storageItem: storageItem) => storageItem.id === itemToDelete.id)
 }

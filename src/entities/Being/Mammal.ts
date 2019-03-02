@@ -8,12 +8,15 @@ import {_BEINGS_STORE_} from '@/store/beings_store';
 import {_FOOD_STORE_} from '@/store/food_store';
 import {FOOD} from '@/registry/FOOD/FOOD';
 
+import {Food} from '@/entities/Food/Food';
+
 type furType = 'thin' | 'thick' | 'none'
 type dietType = 'predator' | 'herbivore' | 'omnivorous'
 
 class Mammal {
     public id: string = generateId('Mammal')
     private calories: number = 2000
+    private unbindEvent: any
 
     constructor(private name: string,
                 private species: string,
@@ -34,7 +37,7 @@ class Mammal {
 
         putInStorage(_BEINGS_STORE_[this.species], this)
 
-        eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
+        this.unbindEvent = eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
     }
 
     private controlCalories() {
@@ -57,19 +60,37 @@ class Mammal {
 
     private findFood() {
         console.log(`${this.name} the ${this.species} is trying to get some food`)
+        
+        for (let i = 0; i < this.foodPreferences.length; i++) {
+            let food = _FOOD_STORE_[this.foodPreferences[i]]
+            
+            if (food && food.length) {
+                let pieceOfFood = food[0]
+                
+                if (pieceOfFood) {
+                    this.eat(pieceOfFood)   
+                }
+            }
+            
+            if (this.calories > 1000) {
+                break
+            }
+        }
     }
     
-    private eat() {
-        
+    private eat(pieceOfFood: Food) {
+        this.calories += pieceOfFood.consume()
     }
 
     private die() {
+        this.unbindEvent()
+        
         removeFromStorage(_BEINGS_STORE_[this.species], this)
 
         console.log(`${this.name} the ${this.species} is dead`)
     }
 
-    static [MAMMALS.DOG](name: string) {
+    static createDog(name: string) {
         return new Mammal(
             name,
             MAMMALS.DOG,
