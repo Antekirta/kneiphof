@@ -28,7 +28,10 @@ import {Food} from '@/entities/Food/Food';
 
 import {Mammal} from '@/entities/Being/Mammal'
 
+import {HuntingHut} from '@/entities/Building/HuntingHut';
+
 Food.createBeef()
+new HuntingHut()
 
 Mammal.createDog('Zigmund')
 

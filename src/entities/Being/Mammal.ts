@@ -109,7 +109,7 @@ class Mammal {
             0,
 
             'predator',
-            [FOOD.BEEF.value, FOOD.CHICKEN.value, FOOD.DEER_MEAT.label, FOOD.HORSE_MEAT.value, FOOD.PORK.value]
+            [FOOD.BEEF.value, FOOD.CHICKEN.value, FOOD.DEER_MEAT.value, FOOD.HORSE_MEAT.value, FOOD.PORK.value]
         )
     }
 }

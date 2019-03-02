@@ -28,10 +28,10 @@ class Food {
             }
         })
     }
-    
+
     consume(): number {
         this.remove()
-        
+
         return this.calories
     }
 
@@ -48,7 +48,11 @@ class Food {
     }
 
     static createBeef() {
-        return new Food(FOOD.BEEF.value, 2000, 10, 48)
+        return new Food(FOOD.BEEF.value, 3000, 20, 48)
+    }
+
+    static createDeerMeat() {
+        return new Food(FOOD.DEER_MEAT.value, 2000, 10, 72) 
     }
 }
 
