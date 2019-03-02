@@ -27,7 +27,7 @@ class Mammal {
                 private fur: furType,
                 private horns: number,
                 private dietType: dietType) {
-        putInStorage(_BEINGS_STORE_.MAMMALS[this.species], this.id)
+        putInStorage(_BEINGS_STORE_[this.species], this.id)
         
         eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
     }
@@ -55,7 +55,7 @@ class Mammal {
     }
     
     private die () {
-        removeFromStorage(_BEINGS_STORE_.MAMMALS[this.species], this.id)
+        removeFromStorage(_BEINGS_STORE_[this.species], this.id)
         
         console.log(`${this.name} the ${this.species} is dead`)
     }
