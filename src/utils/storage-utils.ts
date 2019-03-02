@@ -1,4 +1,4 @@
-const _remove: any = import('lodash/remove')
+const _remove = require('lodash/remove')
 
 export const putInStorage = function (storage: Array<string>, id: string) {
     storage.push(id)

@@ -27,6 +27,8 @@ class Mammal {
                 private fur: furType,
                 private horns: number,
                 private dietType: dietType) {
+        this.species = this.species.toUpperCase()
+        
         putInStorage(_BEINGS_STORE_[this.species], this.id)
         
         eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
