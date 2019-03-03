@@ -10,7 +10,9 @@ const EVENTS = {
             HOUR_PASSED: 'hour-passed',
 
             SIX_HOURS_PASSED: 'six-hours-passed'
-        }
+        },
+
+        WORLD_EVENT: 'world-event'
     }
 };
 

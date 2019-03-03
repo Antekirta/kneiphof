@@ -29,14 +29,24 @@ import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS'
 // utils
 import('@/utils/global-clock')
 
-// entities
-import {Food} from '@/entities/Food/Food';
+// providers
+import {emitImmediately} from '@/providers/events-generator';
 
+// entities
+import {WorldEvent} from '@/entities/WorldEvent/WorldEvent'
+import {Food} from '@/entities/Food/Food';
 import {Mammal} from '@/entities/Being/Mammal'
 import {Person} from '@/entities/Being/Person';
-
 import {HuntingHut} from '@/entities/Building/HuntingHut';
 import {WoodCutterHut} from '@/entities/Building/WoodCutterHut'
+
+new Vue({
+    el: '#app',
+
+    components: {
+        BuildingsList, FoodStorage, ResourceStorage, PeopleList, NewsFeed
+    }
+});
 
 Food.createBeef()
 
@@ -57,12 +67,21 @@ const gediminas = new Person('Gediminas', {
 huntersHut.hire(herkus)
 woodCutterHut.hire(gediminas)
 
-console.log('_PEOPLE_STORE_: ', _PEOPLE_STORE_);
-
-new Vue({
-    el: '#app',
-
-    components: {
-        BuildingsList, FoodStorage, ResourceStorage, PeopleList, NewsFeed
-    }
-});
+emitImmediately(new WorldEvent(
+    'Перун в гневе',
+    'Молния ударила в верхушку осины и подожгла ее',
+    null,
+    [
+        {
+            title: 'Игнорировать'
+        },
+        {
+            title: 'Помолиться',
+            action: () => alert('Возносим молитвы свои тебе, о Перун...')
+        },
+        {
+            title: 'Принести в жертву козла',
+            action: () => alert('Козел мертв')
+        }
+    ]
+))

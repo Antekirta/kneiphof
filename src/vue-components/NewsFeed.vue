@@ -10,7 +10,10 @@
                     <div class="news-feed__item-descr" v-html="event.description"></div>
 
                     <div class="news-feed__item-actions">
-                        <button class="news-feed__item-action" v-for="action in event.actions" :key="action.title"
+                        <button class="news-feed__item-action"
+                                v-for="action in event.actions"
+                                :key="action.title"
+                                @click="action.action"
                                 :title="action.title">{{action.title}}
                         </button>
                     </div>
@@ -20,58 +23,31 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+    import {WorldEvent} from "../entities/WorldEvent/WorldEvent"
     import {eventBus} from "../utils/event-bus"
     import {EVENTS} from "../registry/EVENTS"
 
-    function getEvent() {
-        return {
-            id: Math.random(),
-            title: 'На остров заплыл бешеный лось!' + Math.random(),
-            description: 'Взмыленное животное выскочило из воды и помчалось вдоль прибрежных кустов, круша все на своем пути.',
-            actions: [
-                {
-                    title: 'Игнорировать',
-                    action: 'ignore'
-                },
-
-                {
-                    title: 'Позвать охотника',
-                    action: 'call-hunter'
-                }
-            ]
-        }
-    }
-
     export default {
-        name: 'NewsFeed',
+        name: "NewsFeed",
 
         data() {
             return {
-                events: [
-                    {
-                        title: 'Прибытие',
-                        description: 'Вы стоите на берегу реки. По ту сторону - небольшой, покрытый лесом, остров.',
-                        actions: [
-                            {
-                                title: 'Ничего не делать',
-                                action: 'ignore'
-                            },
-
-                            {
-                                title: 'Переплыть реку',
-                                action: 'swim-across'
-                            }
-                        ]
-                    }
-                ]
+                events: <Array<WorldEvent>> []
             }
         },
 
         created() {
-            eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
-                this.events.unshift(getEvent())
-                
+            eventBus.on(EVENTS.CUSTOM.WORLD_EVENT, (event: WorldEvent) => {
+                this.events.unshift(event)
+
+                event.effect && event.effect()
+
+                event.actions.forEach(action => {
+                    action.action = action.action || function () {
+                    }
+                })
+
                 if (this.events.length > 20) {
                     this.events.pop()
                 }
