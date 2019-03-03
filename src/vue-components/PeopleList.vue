@@ -113,7 +113,7 @@
             font-size: 14px
             
         &__item-label
-            width: 200px
+            width: 250px
     
         &__item-value
             min-width: 150px
