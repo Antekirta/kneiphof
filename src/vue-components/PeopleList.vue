@@ -50,6 +50,7 @@
 
                     return {
                         name: person.name,
+                        id: person.id,
                         professions: professions(),
                         job: person.job,
                         satiety: isHungry()

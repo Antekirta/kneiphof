@@ -6,6 +6,7 @@ import {Resource} from '@/entities/Resource/Resource'
 import {RESOURCES} from '@/registry/RESOURCES/RESOURCES'
 import {_RESOURCES_STORE_} from '@/store/resources_store'
 import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS'
+import {FOOD} from '@/registry/FOOD/FOOD';
 
 class WoodCutterHut extends Building {
     public name = 'Хижина дровосека'
@@ -14,6 +15,8 @@ class WoodCutterHut extends Building {
         super(1, {
             [PROFESSIONS.WOOD_CUTTER.value]: 1
         })
+
+        this.production.push(RESOURCES.SPRUCE.label)
     }
 
     protected produce() {

@@ -14,6 +14,8 @@ class HuntingHut extends Building {
         super(1, {
             [PROFESSIONS.HUNTER.value]: 1
         })
+        
+        this.production.push(FOOD.BEEF.label)
     }
 
     protected produce() {

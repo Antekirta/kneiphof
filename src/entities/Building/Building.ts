@@ -1,9 +1,11 @@
-import {generateId} from '@/utils/generate-id';
+import {generateId} from '@/utils/generate-id'
+import {putInStorage, removeFromStorage} from '@/utils/storage-utils';
 
-import {Person} from '@/entities/Being/Person';
+import {Person} from '@/entities/Being/Person'
 
 import {eventBus} from '@/utils/event-bus'
 import {EVENTS} from '@/registry/EVENTS'
+import {_BUILDINGS_STORE_} from '@/store/buildings_store';
 
 interface IProfessionalsRequirements {
     // profession: professionals count
@@ -12,6 +14,7 @@ interface IProfessionalsRequirements {
 
 class Building {
     readonly id: string = generateId('Building')
+    public production: Array<string> = []
     private unbindEvent: any
     public workers: Array<Person> = []
 
@@ -22,6 +25,8 @@ class Building {
                 this.produce()
             }
         })
+
+        putInStorage(_BUILDINGS_STORE_, this)
     }
 
     protected requirementsAreFulfilled() {
@@ -35,10 +40,16 @@ class Building {
     protected produce() {
         // this method is up to particular realisation
     }
-    
+
+    protected destroy() {
+        removeFromStorage(_BUILDINGS_STORE_, this)
+
+        this.unbindEvent()
+    }
+
     public hire(worker: Person) {
         worker.job = this
-        
+
         this.workers.push(worker)
     }
 }
