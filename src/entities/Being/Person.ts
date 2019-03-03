@@ -4,7 +4,7 @@ import {Mammal} from '@/entities/Being/Mammal'
 
 import {_PEOPLE_STORE_} from '@/store/people-store';
 import {FOOD} from '@/registry/FOOD/FOOD';
-import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS';
+import {Building} from '@/entities/Building/Building'
 
 interface IProfessions {
     // profession: skillPoints
@@ -12,6 +12,8 @@ interface IProfessions {
 }
 
 class Person extends Mammal {
+    public job: Building | undefined
+    
     constructor(name: string, public professions: IProfessions) {
         super(name, 'human',
             70, 1, 1.7, 100,

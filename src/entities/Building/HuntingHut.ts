@@ -8,6 +8,8 @@ import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS';
 import {Food} from '@/entities/Food/Food';
 
 class HuntingHut extends Building {
+    public name = 'Хижина охотника'
+    
     constructor() {
         super(1, {
             [PROFESSIONS.HUNTER.value]: 1

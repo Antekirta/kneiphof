@@ -8,6 +8,8 @@ import {_RESOURCES_STORE_} from '@/store/resources_store'
 import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS'
 
 class WoodCutterHut extends Building {
+    public name = 'Хижина дровосека'
+    
     constructor() {
         super(1, {
             [PROFESSIONS.WOOD_CUTTER.value]: 1

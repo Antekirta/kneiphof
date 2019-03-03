@@ -3,6 +3,12 @@
         <header class="people-list__header">Жители</header>
 
         <ul class="people-list__list">
+            <li class="people-list__item" v>
+                <div class="people-list__item-label"><b>Имя</b></div>
+                <div class="people-list__item-value"><b>Место работы</b></div>
+                <div class="people-list__item-value"><b>Сытость</b></div>
+            </li>
+            
             <li class="people-list__item" v-for="person in peopleList" :key="person.id">
                 <div class="people-list__item-label">
                     {{person.name}}
@@ -14,6 +20,8 @@
                     </span>)
                 </div>
 
+                <div class="people-list__item-value">{{person.job.name}}</div>
+                
                 <div class="people-list__item-value">{{person.satiety}}</div>
             </li>
         </ul>
@@ -43,6 +51,7 @@
                     return {
                         name: person.name,
                         professions: professions(),
+                        job: person.job,
                         satiety: isHungry()
                     }
 
@@ -98,7 +107,15 @@
 
         &__item
             display: flex
-            justify-content: space-between
-            margin-top: 2px
+            justify-content: flex-start
+            margin-bottom: 5px
             font-size: 14px
+            
+        &__item-label
+            width: 200px
+    
+        &__item-value
+            min-width: 150px
+            padding: 0 15px
+            text-align: left
 </style>

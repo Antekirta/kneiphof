@@ -37,6 +37,8 @@ class Building {
     }
     
     public hire(worker: Person) {
+        worker.job = this
+        
         this.workers.push(worker)
     }
 }
