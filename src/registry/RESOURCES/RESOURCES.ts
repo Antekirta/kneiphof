@@ -6,23 +6,23 @@ const RESOURCES: IResources = {
     // wood
     SPRUCE: {
         value: 'SPRUCE',
-        label: 'ель'
+        label: 'Ель'
     },
     PINE: {
         value: 'PINE',
-        label: 'сосна'
+        label: 'Сосна'
     },
     OAK: {
         value: 'OAK',
-        label: 'дуб'
+        label: 'Дуб'
     },
     MAPLE: {
         value: 'MAPLE',
-        label: 'клен'
+        label: 'Клен'
     },
     BIRCH_TREE: {
         value: 'BIRCH_TREE',
-        label: 'береза'
+        label: 'Береза'
     }
 }
 

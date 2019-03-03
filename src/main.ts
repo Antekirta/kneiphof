@@ -12,6 +12,7 @@ import './styles/app.styl'
 
 // vue-components
 import FoodStorage from './vue-components/FoodStorage.vue'
+import ResourceStorage from './vue-components/ResourceStorage.vue'
 
 // store
 import {_BEINGS_STORE_} from '@/store/beings_store'
@@ -47,6 +48,6 @@ new Vue({
     el: '#app',
 
     components: {
-        FoodStorage
+        FoodStorage, ResourceStorage
     }
 });
