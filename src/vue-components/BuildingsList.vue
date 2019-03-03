@@ -59,6 +59,7 @@
         padding: 15px
         margin-top: 30px
         border: solid 1px #222
+        background-color: #fff
 
         &__header
             position: absolute

@@ -1,7 +1,7 @@
 <template>
     <div class="weather">
-        <header class="weather__header">{{timeOfDay}}</header>
-        
+        <header class="weather__header" :class="'weather__header--' + timeOfDay.value.toLowerCase()">{{timeOfDay.label}}</header>
+
         <div class="weather__list">
             <div class="weather__item">
                 <div class="weather__item-label">Тепло, слабый западный ветер</div>
@@ -17,16 +17,16 @@
 
     export default {
         name: 'Weather',
-        
-        data () {
+
+        data() {
             return {
-                timeOfDay: TIME.TIMES_OF_DAY.NIGHT.label
+                timeOfDay: TIME.TIMES_OF_DAY.NIGHT
             }
         },
-        
-        created () {
+
+        created() {
             eventBus.on(EVENTS.CUSTOM.TIME_OF_DAY, (timeOfDay) => {
-                this.timeOfDay = timeOfDay.label
+                this.timeOfDay = timeOfDay
             })
         }
     }
@@ -37,17 +37,34 @@
         position: relative
         padding: 15px
         border: solid 1px #222
+        background-color: #fff
 
         &__header
             position: absolute
             top: -15px
             left: 10px
-            padding: 0 10px
-            background-color: #fff
+            padding: 0 10px 3px
+            border: solid 1px #222
+            transition: 2s
+            
+            &--night
+                background-color: rgba(0, 0, 0, 1)
+                color: #fff
+
+            &--morning
+                background-color: rgba(253, 94, 83, 1)
+                color: #fff
+                
+            &--day
+                background-color: rgba(255, 255, 66, 1)    
+
+            &--evening
+                background-color: rgba(253, 94, 83, 1)
+                color: #fff
 
         &__list
             margin: 0
-            padding: 0
+            padding: 10px 0 0 0 
             list-style-type: none
 
         &__item

@@ -24,6 +24,7 @@ import {_FOOD_STORE_} from '@/store/food_store'
 import {_PEOPLE_STORE_} from '@/store/people-store'
 
 // registry
+import {EVENTS} from '@/registry/EVENTS'
 import {FOOD} from '@/registry/FOOD/FOOD'
 import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS'
 
@@ -43,6 +44,8 @@ import {WoodCutterHut} from '@/entities/Building/WoodCutterHut'
 
 new Vue({
     el: '#app',
+    
+    mounted () {},
 
     components: {
         BuildingsList, FoodStorage, ResourceStorage, PeopleList, NewsFeed, Weather

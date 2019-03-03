@@ -62,6 +62,7 @@
         max-height: 100vh
         padding: 15px
         border: solid 1px #222
+        background-color: #fff
 
         &__header
             position: absolute

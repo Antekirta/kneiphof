@@ -42,7 +42,7 @@ class GlobalClock {
                     this.hoursPassed = 0
                 }
             }
-        }, 500)
+        }, 1000)
     }
 
     daySinceStart(): number {
