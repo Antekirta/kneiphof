@@ -24,7 +24,7 @@ class GlobalClock {
                     eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED)
                 }
             }
-        }, 100)
+        }, 500)
     }
 
     daySinceStart(): number {

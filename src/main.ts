@@ -15,6 +15,7 @@ import FoodStorage from './vue-components/FoodStorage.vue'
 import ResourceStorage from './vue-components/ResourceStorage.vue'
 import PeopleList from './vue-components/PeopleList.vue'
 import BuildingsList from './vue-components/BuildingsList.vue'
+import NewsFeed from './vue-components/NewsFeed.vue'
 
 // store
 import {_BEINGS_STORE_} from '@/store/beings_store'
@@ -62,6 +63,6 @@ new Vue({
     el: '#app',
 
     components: {
-        BuildingsList, FoodStorage, ResourceStorage, PeopleList
+        BuildingsList, FoodStorage, ResourceStorage, PeopleList, NewsFeed
     }
 });
