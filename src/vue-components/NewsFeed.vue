@@ -3,17 +3,19 @@
         <div class="news-feed__header">События</div>
 
         <div class="news-feed__list">
-            <div class="news-feed__item" v-for="event in events" :key="event.title">
-                <header class="news-feed__item-header"><b>{{event.title}}</b></header>
+            <transition-group name="fade">
+                <div class="news-feed__item" v-for="event in events" :key="event.id">
+                    <header class="news-feed__item-header"><b>{{event.title}}</b></header>
 
-                <div class="news-feed__item-descr" v-html="event.description"></div>
+                    <div class="news-feed__item-descr" v-html="event.description"></div>
 
-                <div class="news-feed__item-actions">
-                    <button class="news-feed__item-action" v-for="action in event.actions" :key="action.title"
-                            :title="action.title">{{action.title}}
-                    </button>
+                    <div class="news-feed__item-actions">
+                        <button class="news-feed__item-action" v-for="action in event.actions" :key="action.title"
+                                :title="action.title">{{action.title}}
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </transition-group>
         </div>
     </div>
 </template>
@@ -24,7 +26,8 @@
 
     function getEvent() {
         return {
-            title: 'На остров заплыл бешеный лось!',
+            id: Math.random(),
+            title: 'На остров заплыл бешеный лось!' + Math.random(),
             description: 'Взмыленное животное выскочило из воды и помчалось вдоль прибрежных кустов, круша все на своем пути.',
             actions: [
                 {
@@ -79,18 +82,24 @@
         max-height: 100vh
         padding: 15px
         border: solid 1px #222
-        
+
         &__header
             position: absolute
             top: -15px
             left: 10px
             padding: 0 10px
             background-color: #fff
-    
+
         &__item
             margin-bottom: 30px
             transition: .3s
-    
+
         &__item-actions
             margin-top: 5px
+
+    .fade-enter-active, .fade-leave-active
+        transition: opacity .5s
+
+    .fade-enter, .fade-leave-to
+        opacity: 0
 </style>
