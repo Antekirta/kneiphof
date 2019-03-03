@@ -32,17 +32,25 @@ import {Mammal} from '@/entities/Being/Mammal'
 import {Person} from '@/entities/Being/Person';
 
 import {HuntingHut} from '@/entities/Building/HuntingHut';
+import {WoodCutterHut} from '@/entities/Building/WoodCutterHut'
 
 Food.createBeef()
 
 const huntersHut = new HuntingHut()
+const woodCutterHut = new WoodCutterHut()
 
 const herkus = new Person('Herkus', {
         [PROFESSIONS.HUNTER.value]: 2
     }
 )
 
+const gediminas = new Person('Gediminas', {
+        [PROFESSIONS.WOOD_CUTTER.value]: 2
+    }
+)
+
 huntersHut.hire(herkus)
+woodCutterHut.hire(gediminas)
 
 new Vue({
     el: '#app',
