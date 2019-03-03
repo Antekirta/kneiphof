@@ -3,7 +3,7 @@
         <header class="people-list__header">Жители</header>
 
         <ul class="people-list__list">
-            <li class="people-list__item" v>
+            <li class="people-list__item">
                 <div class="people-list__item-label"><b>Имя</b></div>
                 <div class="people-list__item-value"><b>Место работы</b></div>
                 <div class="people-list__item-value"><b>Сытость</b></div>
