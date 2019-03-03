@@ -13,10 +13,12 @@ import './styles/app.styl'
 // vue-components
 import FoodStorage from './vue-components/FoodStorage.vue'
 import ResourceStorage from './vue-components/ResourceStorage.vue'
+import PeopleList from './vue-components/PeopleList.vue'
 
 // store
 import {_BEINGS_STORE_} from '@/store/beings_store'
 import {_FOOD_STORE_} from '@/store/food_store'
+import {_PEOPLE_STORE_} from '@/store/people-store'
 
 // registry
 import {FOOD} from '@/registry/FOOD/FOOD'
@@ -40,7 +42,8 @@ const huntersHut = new HuntingHut()
 const woodCutterHut = new WoodCutterHut()
 
 const herkus = new Person('Herkus', {
-        [PROFESSIONS.HUNTER.value]: 2
+        [PROFESSIONS.HUNTER.value]: 4,
+        [PROFESSIONS.WOOD_CUTTER.value]: 2
     }
 )
 
@@ -52,10 +55,12 @@ const gediminas = new Person('Gediminas', {
 huntersHut.hire(herkus)
 woodCutterHut.hire(gediminas)
 
+console.log('_PEOPLE_STORE_: ', _PEOPLE_STORE_);
+
 new Vue({
     el: '#app',
 
     components: {
-        FoodStorage, ResourceStorage
+        FoodStorage, ResourceStorage, PeopleList
     }
 });

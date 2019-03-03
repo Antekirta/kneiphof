@@ -13,7 +13,7 @@ interface IProfessions {
 
 class Person extends Mammal {
     constructor(name: string, public professions: IProfessions) {
-        super(name, 'person',
+        super(name, 'human',
             70, 1, 1.7, 100,
             25, 5, 200,
             2, 'none', 0,
