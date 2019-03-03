@@ -7,5 +7,24 @@ export const TIME = {
 
     WEEKS_IN_MONTH: 4,
 
-    MONTHS_IN_YEAR: 12
+    MONTHS_IN_YEAR: 12,
+    
+    TIMES_OF_DAY: {
+        NIGHT: {
+            value: 'NIGHT',
+            label: 'Ночь'
+        },
+        MORNING: {
+            value: 'MORNING',
+            label: 'Утро'
+        },
+        DAY: {
+            value: 'DAY',
+            label: 'День'
+        },
+        EVENING: {
+            value: 'EVENING',
+            label: 'Вечер'
+        }
+    }
 }

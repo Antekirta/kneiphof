@@ -50,6 +50,7 @@
     .food-storage
         position: relative
         padding: 15px
+        margin-top: 30px
         border: solid 1px #222
 
         &__header
