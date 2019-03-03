@@ -16,9 +16,9 @@ type dietType = 'predator' | 'herbivore' | 'omnivorous'
 class Mammal {
     public id: string = generateId('Mammal')
     private calories: number = 2000
-    private unbindEvent: any
+    protected unbindEvent: any
 
-    constructor(private name: string,
+    constructor(protected name: string,
                 private species: string,
                 private weight: number, // kg
                 private width: number, // m
@@ -35,9 +35,13 @@ class Mammal {
                 private foodPreferences: Array<string>) {
         this.species = this.species.toUpperCase()
 
-        putInStorage(_BEINGS_STORE_[this.species], this)
+        this.addInStorage()
 
         this.unbindEvent = eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
+    }
+    
+    protected addInStorage () {
+        putInStorage(_BEINGS_STORE_[this.species], this)
     }
 
     private controlCalories() {
@@ -82,7 +86,7 @@ class Mammal {
         this.calories += pieceOfFood.consume()
     }
 
-    private die() {
+    protected die() {
         this.unbindEvent()
         
         removeFromStorage(_BEINGS_STORE_[this.species], this)

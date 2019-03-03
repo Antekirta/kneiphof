@@ -24,7 +24,9 @@ class Food {
             this.hoursExpired++
 
             if (this.hoursExpired >= this.shelfLife) {
-                this.rot()
+                if (Math.random() > 0.3) {
+                    this.rot()   
+                }
             }
         })
     }
