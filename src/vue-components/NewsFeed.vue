@@ -71,6 +71,10 @@
         created() {
             eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
                 this.events.unshift(getEvent())
+                
+                if (this.events.length > 20) {
+                    this.events.pop()
+                }
             })
         }
     }
