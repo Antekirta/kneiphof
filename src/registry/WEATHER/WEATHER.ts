@@ -1,4 +1,13 @@
-const WEATHER = {
+interface IWeather {
+    [index: string]: {
+        [index: string]: {
+            value: string,
+            label: string
+        }
+    }
+}
+
+const WEATHER: IWeather = {
     TEMPERATURE: {
         FREEZING: {
             value: 'FREEZING',
@@ -31,25 +40,62 @@ const WEATHER = {
         }
     },
 
+    PRECIPITATION: {
+        HAIL: {
+            value: 'HAIL',
+            label: 'Град'
+        },
+
+        BLIZZARD: {
+            value: 'BLIZZARD',
+            label: 'Метель'
+        },
+
+        SNOW: {
+            value: 'SNOW',
+            label: 'Снег'
+        },
+
+        SHOWER: {
+            value: 'SHOWER',
+            label: 'Ливень'
+        },
+
+        RAIN: {
+            value: 'RAIN',
+            label: 'Дождь'
+        },
+
+        LIGHT_RAIN: {
+            value: 'LIGHT_RAIN',
+            label: 'Слабый дождик'
+        },
+
+        DRY: {
+            value: 'DRY',
+            label: 'Сухо'
+        }
+    },
+
     WIND_STRENGTH: {
         HURRICANE: {
-            value: 'HOT',
+            value: 'HURRICANE',
             label: 'Ураганный ветер'
         },
         STRONG: {
-            value: 'HOT',
+            value: 'STRONG',
             label: 'Сильный ветер'
         },
         MILD: {
-            value: 'HOT',
+            value: 'MILD',
             label: 'Умеренный ветер'
         },
         WEAK: {
-            value: 'HOT',
+            value: 'WEAK',
             label: 'Слабый ветер'
         },
         NONE: {
-            value: 'HOT',
+            value: 'NONE',
             label: 'Штиль'
         }
     },

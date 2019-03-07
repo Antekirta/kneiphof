@@ -1,7 +1,21 @@
 import {WEATHER} from '@/registry/WEATHER/WEATHER'
 
-const _WEATHER_STORE_ = {
+interface IWeatherItem {
+    value: string,
+    label: string
+}
+
+interface I_WEATHER_STORE_ {
+    TEMPERATURE: IWeatherItem,
+    PRECIPITATION: IWeatherItem,
+    WIND_STRENGTH: IWeatherItem,
+    WIND_DIRECTION: IWeatherItem,
+}
+
+const _WEATHER_STORE_: I_WEATHER_STORE_ = {
     TEMPERATURE: WEATHER.TEMPERATURE.WARM,
+
+    PRECIPITATION: WEATHER.PRECIPITATION.DRY,
 
     WIND_STRENGTH: WEATHER.WIND_STRENGTH.WEAK,
 
