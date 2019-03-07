@@ -7,7 +7,7 @@ import {_WEATHER_STORE_} from '@/store/weather_store'
 import {WEATHER} from '@/registry/WEATHER/WEATHER'
 
 eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
-    const currentWeather = winterSet()
+    const currentWeather = summerSet()
 
     _WEATHER_STORE_.TEMPERATURE = currentWeather.TEMPERATURE
     _WEATHER_STORE_.PRECIPITATION = currentWeather.PRECIPITATION

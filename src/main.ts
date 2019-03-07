@@ -22,6 +22,7 @@ import Weather from './vue-components/Weather.vue'
 import {_BEINGS_STORE_} from '@/store/beings_store'
 import {_FOOD_STORE_} from '@/store/food_store'
 import {_PEOPLE_STORE_} from '@/store/people-store'
+import {_WEATHER_STORE_} from '@/store/weather_store'
 
 // registry
 import {EVENTS} from '@/registry/EVENTS'
@@ -32,7 +33,8 @@ import {PROFESSIONS} from '@/registry/PROFESSIONS/PROFESSIONS'
 import('@/utils/global-clock')
 
 // providers
-import {emitImmediately} from '@/providers/events-generator';
+import {emitImmediately} from '@/providers/events-generator'
+import '@/providers/weather-provider'
 
 // entities
 import {WorldEvent} from '@/entities/WorldEvent/WorldEvent'
@@ -72,6 +74,8 @@ huntersHut.hire(herkus)
 woodCutterHut.hire(gediminas)
 
 setInterval(() => {
+    console.log(`Температура: ${_WEATHER_STORE_.TEMPERATURE.label} <br> Осадки: ${_WEATHER_STORE_.PRECIPITATION.label} Сила ветра: ${_WEATHER_STORE_.WIND_STRENGTH.label} Направление ветра: ${_WEATHER_STORE_.WIND_DIRECTION.label}`)
+    
     emitImmediately(new WorldEvent(
         'Перун в гневе',
         'Молния ударила в верхушку осины и подожгла ее',

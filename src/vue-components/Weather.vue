@@ -10,7 +10,12 @@
             </div>
 
             <div class="weather__item">
-                <div class="weather__item-label">Тепло, слабый западный ветер</div>
+                <div class="weather__item-label">
+                    {{weather.TEMPERATURE.label}},
+                    {{weather.PRECIPITATION.label.toLowerCase()}}, 
+                    {{weather.WIND_DIRECTION.label.toLowerCase()}}, 
+                    {{weather.WIND_STRENGTH.label.toLowerCase()}}
+                </div>
             </div>
         </div>
     </div>
@@ -21,6 +26,7 @@
     import {EVENTS} from "../registry/EVENTS"
     import {TIME} from "../registry/TIME/TIME"
     import {_TIME_STORE_} from "../store/time_store"
+    import {_WEATHER_STORE_} from "../store/weather_store"
 
     export default {
         name: 'Weather',
@@ -29,7 +35,9 @@
             return {
                 timeOfDay: TIME.TIMES_OF_DAY.NIGHT,
 
-                season: TIME.SEASON.SUMMER
+                season: TIME.SEASON.SUMMER,
+                
+                weather: _WEATHER_STORE_
             }
         },
 
@@ -40,6 +48,10 @@
 
             eventBus.on(EVENTS.CUSTOM.SEASON_CHANGED, () => {
                 this.season = _TIME_STORE_.SEASON
+            })
+            
+            eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
+                this.weather = Object.assign({}, _WEATHER_STORE_)
             })
         }
     }
