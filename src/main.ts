@@ -71,21 +71,23 @@ const gediminas = new Person('Gediminas', {
 huntersHut.hire(herkus)
 woodCutterHut.hire(gediminas)
 
-emitImmediately(new WorldEvent(
-    'Перун в гневе',
-    'Молния ударила в верхушку осины и подожгла ее',
-    null,
-    [
-        {
-            title: 'Игнорировать'
-        },
-        {
-            title: 'Помолиться',
-            action: () => alert('Возносим молитвы свои тебе, о Перун...')
-        },
-        {
-            title: 'Принести в жертву козла',
-            action: () => alert('Козел мертв')
-        }
-    ]
-))
+setInterval(() => {
+    emitImmediately(new WorldEvent(
+        'Перун в гневе',
+        'Молния ударила в верхушку осины и подожгла ее',
+        null,
+        [
+            {
+                title: 'Игнорировать'
+            },
+            {
+                title: 'Помолиться',
+                action: () => alert('Возносим молитвы свои тебе, о Перун...')
+            },
+            {
+                title: 'Принести в жертву козла',
+                action: () => alert('Козел мертв')
+            }
+        ]
+    ))
+}, 5000)

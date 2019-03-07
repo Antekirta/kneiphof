@@ -9,6 +9,8 @@ export const TIME = {
 
     MONTHS_IN_YEAR: 12,
     
+    HOURS_IN_SEASON: 100,
+    
     TIMES_OF_DAY: {
         NIGHT: {
             value: 'NIGHT',
@@ -25,6 +27,28 @@ export const TIME = {
         EVENING: {
             value: 'EVENING',
             label: 'Вечер'
+        }
+    },
+    
+    SEASON: {
+        WINTER: {
+            value: 'WINTER',
+            label: 'Зима'
+        },
+
+        SPRING: {
+            value: 'SPRING',
+            label: 'Весна'
+        },
+
+        SUMMER: {
+            value: 'SUMMER',
+            label: 'Лето'
+        },
+
+        AUTUMN: {
+            value: 'AUTUMN',
+            label: 'Осень'
         }
     }
 }

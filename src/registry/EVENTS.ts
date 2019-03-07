@@ -11,8 +11,10 @@ const EVENTS = {
 
             SIX_HOURS_PASSED: 'six-hours-passed',
         },
-        
+
         TIME_OF_DAY: 'time-of-day',
+
+        SEASON_CHANGED: 'season-changed',
 
         WORLD_EVENT: 'world-event'
     }
