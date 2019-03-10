@@ -46,7 +46,7 @@ const sets = {
     }
 }
 
-eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
+eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.DAY_PASSED, () => {
     const currentWeather = sets[_TIME_STORE_.SEASON.value]()
 
     _WEATHER_STORE_.TEMPERATURE = currentWeather.TEMPERATURE

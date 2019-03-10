@@ -102,10 +102,6 @@
             eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.MONTH_PASSED, () => {
                 this.season = Object.assign({}, _TIME_STORE_.SEASON)
             })
-
-            eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
-                this.weather = Object.assign({}, _WEATHER_STORE_)
-            })
         }
     }
 </script>
