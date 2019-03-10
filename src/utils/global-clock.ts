@@ -39,6 +39,26 @@ class GlobalClock {
         const week = Math.floor((this.hoursPassed - hoursInYear * year - hoursInMonth * month) / hoursInWeek)
         const day = Math.floor((this.hoursPassed - hoursInYear * year - hoursInMonth * month - hoursInWeek * week) / hoursInDay)
         
+        if (_TIME_STORE_.CURRENT.YEAR !== year) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.YEAR_PASSED)
+        }
+        
+        if (month % 6 === 0) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_MONTH_PASSED)
+        }
+
+        if (month % 3 === 0) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.THREE_MONTHS_PASSED)
+        }
+
+        if (_TIME_STORE_.CURRENT.MONTH !== month) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.MONTH_PASSED)
+        }
+
+        if (_TIME_STORE_.CURRENT.DAY !== day) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.DAY_PASSED)
+        }
+        
         _TIME_STORE_.CURRENT.YEAR = year
         _TIME_STORE_.CURRENT.MONTH = month
         _TIME_STORE_.CURRENT.WEEK = week

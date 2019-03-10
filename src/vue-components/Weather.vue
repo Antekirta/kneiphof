@@ -11,7 +11,6 @@
                     {{month}},
                     {{week}} неделя,
                     {{day}}
-                    <b>{{season.label}}</b>
                 </div>
             </div>
 
