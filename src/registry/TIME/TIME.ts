@@ -8,17 +8,16 @@ export const TIME = {
     WEEKS_IN_MONTH: 4,
 
     MONTHS_IN_YEAR: 12,
-    
+
     HOURS_IN_SEASON: 100,
-    
+
     CURRENT: {
-        YEAR: 'current-year',
-        MONTH: 'current-month',
-        WEEK: 'current-week',
-        DAY: 'current-day',
-        HOUR: 'current-hour',
+        YEAR: 0,
+        MONTH: 0,
+        WEEK: 0,
+        DAY: 0
     },
-    
+
     TIMES_OF_DAY: {
         NIGHT: {
             value: 'NIGHT',
@@ -37,7 +36,7 @@ export const TIME = {
             label: 'Вечер'
         }
     },
-    
+
     SEASON: {
         WINTER: {
             value: 'WINTER',

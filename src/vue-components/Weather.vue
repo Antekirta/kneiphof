@@ -6,14 +6,20 @@
 
         <div class="weather__list">
             <div class="weather__item">
-                <div class="weather__item-label"><b>{{season.label}}</b></div>
+                <div class="weather__item-label">
+                    {{year}} год,
+                    {{month}},
+                    {{week}} неделя,
+                    {{day}}
+                    <b>{{season.label}}</b>
+                </div>
             </div>
 
             <div class="weather__item">
                 <div class="weather__item-label">
                     {{weather.TEMPERATURE.label}},
-                    {{weather.PRECIPITATION.label.toLowerCase()}}, 
-                    {{weather.WIND_DIRECTION.label.toLowerCase()}}, 
+                    {{weather.PRECIPITATION.label.toLowerCase()}},
+                    {{weather.WIND_DIRECTION.label.toLowerCase()}},
                     {{weather.WIND_STRENGTH.label.toLowerCase()}}
                 </div>
             </div>
@@ -21,27 +27,71 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import {eventBus} from "../utils/event-bus"
     import {EVENTS} from "../registry/EVENTS"
     import {TIME} from "../registry/TIME/TIME"
     import {_TIME_STORE_} from "../store/time_store"
     import {_WEATHER_STORE_} from "../store/weather_store"
+    
+    enum YEARS {
+        Первый, Второй, Третий, Четвертый, Пятый, Шестой, Седьмой, Восьмой, Девятый, Десятый, Одиннадцатый, Двенадцатый, Тринадцатый, Четырнадцатый,
+        Пятнадцатый, Шестнадцатый, Семнадцатый, Восемнадцатый, Девятнадцатый, Двадцатый, 'Двадцать первый' 
+    }
+
+    enum MONTHS {
+        Январь,
+        Февраль,
+        Март,
+        Апрель,
+        Май,
+        Июнь,
+        Июль,
+        Август,
+        Сентябрь,
+        Октябрь,
+        Ноябрь,
+        Декабрь,
+    }
+    
+    enum WEEKS {
+        первая, вторая, третья, четвертая
+    }
+    
+    enum DAYS_OF_WEEK {
+        Понедельник,
+        Вторник,
+        Среда,
+        Четверг,
+        Пятница,
+        Суббота,
+        Воскресенье,
+    }
 
     export default {
-        name: 'Weather',
+        name: "Weather",
 
         data() {
             return {
-                timeOfDay: TIME.TIMES_OF_DAY.NIGHT,
+                year: _TIME_STORE_.CURRENT.YEAR,
+                month: _TIME_STORE_.CURRENT.MONTH,
+                week: _TIME_STORE_.CURRENT.WEEK,
+                day: _TIME_STORE_.CURRENT.DAY,
 
+                timeOfDay: TIME.TIMES_OF_DAY.NIGHT,
                 season: TIME.SEASON.SUMMER,
-                
                 weather: _WEATHER_STORE_
             }
         },
 
         created() {
+            eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, () => {
+                this.year = YEARS[_TIME_STORE_.CURRENT.YEAR]
+                this.month = MONTHS[_TIME_STORE_.CURRENT.MONTH].toLowerCase()
+                this.week = WEEKS[_TIME_STORE_.CURRENT.WEEK]
+                this.day = DAYS_OF_WEEK[_TIME_STORE_.CURRENT.DAY].toLowerCase()
+            })
+
             eventBus.on(EVENTS.CUSTOM.TIME_OF_DAY, (timeOfDay) => {
                 this.timeOfDay = timeOfDay
             })
@@ -49,7 +99,7 @@
             eventBus.on(EVENTS.CUSTOM.SEASON_CHANGED, () => {
                 this.season = _TIME_STORE_.SEASON
             })
-            
+
             eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
                 this.weather = Object.assign({}, _WEATHER_STORE_)
             })

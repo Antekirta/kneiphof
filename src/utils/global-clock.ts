@@ -25,7 +25,7 @@ class GlobalClock {
                 
                 this.calculateCurrentDate()
             }
-        }, 10)
+        }, 500)
     }
     
     calculateCurrentDate () {
@@ -37,11 +37,12 @@ class GlobalClock {
         const year = Math.floor(this.hoursPassed / hoursInYear)
         const month = Math.floor((this.hoursPassed - hoursInYear * year) / hoursInMonth)
         const week = Math.floor((this.hoursPassed - hoursInYear * year - hoursInMonth * month) / hoursInWeek)
+        const day = Math.floor((this.hoursPassed - hoursInYear * year - hoursInMonth * month - hoursInWeek * week) / hoursInDay)
         
-        // console.log('year: ', year)
-        // console.log('month: ', month)
-        console.log('week: ', week)
-        // console.log('==================')
+        _TIME_STORE_.CURRENT.YEAR = year
+        _TIME_STORE_.CURRENT.MONTH = month
+        _TIME_STORE_.CURRENT.WEEK = week
+        _TIME_STORE_.CURRENT.DAY = day
     }
     
     emitTimeOfDay () {
