@@ -45,8 +45,6 @@ class Food {
 
     rot() {
         this.remove()
-
-        console.log(`${this.name} has rotten!`)
     }
 
     static createBeef() {

@@ -63,8 +63,6 @@ class Mammal {
     }
 
     private findFood() {
-        console.log(`${this.name} the ${this.species} is trying to get some food`)
-        
         for (let i = 0; i < this.foodPreferences.length; i++) {
             let food = _FOOD_STORE_[this.foodPreferences[i]]
             

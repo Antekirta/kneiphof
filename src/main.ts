@@ -74,8 +74,6 @@ huntersHut.hire(herkus)
 woodCutterHut.hire(gediminas)
 
 setInterval(() => {
-    console.log(`Температура: ${_WEATHER_STORE_.TEMPERATURE.label} <br> Осадки: ${_WEATHER_STORE_.PRECIPITATION.label} Сила ветра: ${_WEATHER_STORE_.WIND_STRENGTH.label} Направление ветра: ${_WEATHER_STORE_.WIND_DIRECTION.label}`)
-    
     emitImmediately(new WorldEvent(
         'Перун в гневе',
         'Молния ударила в верхушку осины и подожгла ее',

@@ -11,6 +11,14 @@ export const TIME = {
     
     HOURS_IN_SEASON: 100,
     
+    CURRENT: {
+        YEAR: 'current-year',
+        MONTH: 'current-month',
+        WEEK: 'current-week',
+        DAY: 'current-day',
+        HOUR: 'current-hour',
+    },
+    
     TIMES_OF_DAY: {
         NIGHT: {
             value: 'NIGHT',

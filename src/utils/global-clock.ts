@@ -10,7 +10,7 @@ import {eventBus} from '@/utils/event-bus'
 let hoursOfDay = 0
 
 class GlobalClock {
-    public hoursPassed = 0
+    private hoursPassed = 0
 
     constructor() {
         this.countTime();
@@ -20,26 +20,39 @@ class GlobalClock {
         setInterval(() => {
             if (!window.pause) {
                 this.hoursPassed++
-                hoursOfDay++
                 
-                eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED)
+                this.emitTimeOfDay()
                 
-                if (hoursOfDay % 6 === 0) {
-                    eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED)
-                }
-                                
-                this.emitTimeOfDay(hoursOfDay)
-                
-                this.emitSeason()
-                
-                if (hoursOfDay === 24) {
-                    hoursOfDay = 0
-                }
+                this.calculateCurrentDate()
             }
-        }, 500)
+        }, 10)
     }
     
-    emitTimeOfDay (hoursOfDay: number) {
+    calculateCurrentDate () {
+        const hoursInYear = 8640
+        const hoursInMonth = 720
+        const hoursInWeek = 168
+        const hoursInDay = 24
+        
+        const year = Math.floor(this.hoursPassed / hoursInYear)
+        const month = Math.floor((this.hoursPassed - hoursInYear * year) / hoursInMonth)
+        const week = Math.floor((this.hoursPassed - hoursInYear * year - hoursInMonth * month) / hoursInWeek)
+        
+        // console.log('year: ', year)
+        // console.log('month: ', month)
+        console.log('week: ', week)
+        // console.log('==================')
+    }
+    
+    emitTimeOfDay () {
+        hoursOfDay++
+
+        eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED)
+
+        if (hoursOfDay % 6 === 0) {
+            eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED)
+        }
+        
         let timeOfDay = TIME.TIMES_OF_DAY.NIGHT
 
         if (hoursOfDay < 5) {
@@ -53,6 +66,10 @@ class GlobalClock {
         }
 
         eventBus.emit(EVENTS.CUSTOM.TIME_OF_DAY, timeOfDay)
+
+        if (hoursOfDay === 24) {
+            hoursOfDay = 0
+        }
     }
     
     emitSeason () {
@@ -71,22 +88,6 @@ class GlobalClock {
             
             eventBus.emit(EVENTS.CUSTOM.SEASON_CHANGED)
         }
-    }
-
-    daySinceStart(): number {
-        return Math.floor(this.hoursPassed / (TIME.HOURS_IN_DAY + 1));
-    }
-
-    weekSinceStart(): number {
-        return Math.floor(this.daySinceStart() / (TIME.DAYS_IN_WEEK + 1));
-    }
-
-    monthsSinceStart(): number {
-        return Math.floor(this.weekSinceStart() / (TIME.WEEKS_IN_MONTH + 1));
-    }
-
-    yearsSinceStart(): number {
-        return Math.floor(this.monthsSinceStart() / (TIME.MONTHS_IN_YEAR + 1));
     }
 }
 
