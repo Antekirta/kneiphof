@@ -1,3 +1,7 @@
+import {Person} from '@/entities/Being/Person';
+
+const _intersection = require('lodash/intersection')
+
 import {putInStorage} from '@/utils/storage-utils';
 
 import {Building} from '@/entities/Building/Building'
@@ -31,8 +35,20 @@ class HuntingHut extends Building {
         }
     }
 
-    private isSucceed (): boolean {
-       let baseProbability = 1
+    protected isSucceed (): boolean {
+        console.log(this.workers)
+        
+       let baseProbability = this.workers.reduce((acc, worker): any => {
+           return 5
+           
+           const professions = _intersection(Object.keys(this.professionalsRequirements), Object.keys(worker.professions))
+           
+           debugger
+           
+           return worker.job.id
+       })
+        
+        console.log('baseProbability: ', baseProbability)
         
         if (_WEATHER_STORE_.WIND_STRENGTH.value === WEATHER.WIND_STRENGTH.HURRICANE.value) {
            baseProbability -= 0.2
