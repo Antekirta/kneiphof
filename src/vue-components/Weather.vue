@@ -15,6 +15,10 @@
             </div>
 
             <div class="weather__item">
+                <div class="weather__item-label"><b>{{season.label}}</b></div>
+            </div>
+
+            <div class="weather__item">
                 <div class="weather__item-label">
                     {{weather.TEMPERATURE.label}},
                     {{weather.PRECIPITATION.label.toLowerCase()}},
@@ -78,7 +82,7 @@
                 day: _TIME_STORE_.CURRENT.DAY,
 
                 timeOfDay: TIME.TIMES_OF_DAY.NIGHT,
-                season: TIME.SEASON.SUMMER,
+                season: TIME.SEASON.WINTER,
                 weather: _WEATHER_STORE_
             }
         },
@@ -95,8 +99,8 @@
                 this.timeOfDay = timeOfDay
             })
 
-            eventBus.on(EVENTS.CUSTOM.SEASON_CHANGED, () => {
-                this.season = _TIME_STORE_.SEASON
+            eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.MONTH_PASSED, () => {
+                this.season = Object.assign({}, _TIME_STORE_.SEASON)
             })
 
             eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
