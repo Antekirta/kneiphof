@@ -66,7 +66,9 @@ class HuntingHut extends Building {
             baseProbability += 0.1
         }
         
-        return Math.random() > (1 - baseProbability)+
+        console.log('baseProbability: ', baseProbability)
+        
+        return Math.random() > (1 - baseProbability)
     }
 }
 
