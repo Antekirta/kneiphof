@@ -21,7 +21,7 @@ class Building {
     constructor(protected productivity: number,
                 public professionalsRequirements: IProfessionalsRequirements,) {
         this.unbindEvent = eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.SIX_HOURS_PASSED, () => {
-            if (this.requirementsAreFulfilled()) {
+            if (this.requirementsAreFulfilled() && this.isSucceed()) {
                 this.produce()
             }
         })
@@ -51,6 +51,10 @@ class Building {
         worker.job = this
 
         this.workers.push(worker)
+    }
+    
+    protected isSucceed (): boolean {
+        return true
     }
 }
 
