@@ -32,7 +32,7 @@ class HuntingHut extends Building {
     }
 
     private isSucceed (): boolean {
-       let baseProbability = 0.5
+       let baseProbability = 1
         
         if (_WEATHER_STORE_.WIND_STRENGTH.value === WEATHER.WIND_STRENGTH.HURRICANE.value) {
            baseProbability -= 0.2
@@ -65,8 +65,6 @@ class HuntingHut extends Building {
         if (_WEATHER_STORE_.TEMPERATURE.value === WEATHER.TEMPERATURE.MILD.value) {
             baseProbability += 0.1
         }
-        
-        console.log('baseProbability: ', baseProbability)
         
         return Math.random() > (1 - baseProbability)
     }

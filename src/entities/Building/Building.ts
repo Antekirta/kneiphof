@@ -51,6 +51,8 @@ class Building {
         worker.job = this
 
         this.workers.push(worker)
+        
+        
     }
     
     protected isSucceed (): boolean {

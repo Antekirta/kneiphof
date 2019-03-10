@@ -29,7 +29,7 @@ class GlobalClock {
 
                 this.setSeason()
             }
-        }, 1000)
+        }, 10)
     }
 
     calculateCurrentDate() {
@@ -72,8 +72,6 @@ class GlobalClock {
 
         if (prevDay !== day) {
             eventBus.emit(EVENTS.CUSTOM.GLOBAL_CLOCK.DAY_PASSED)
-            
-            console.log('AAAAAAAA')
         }
     }
 

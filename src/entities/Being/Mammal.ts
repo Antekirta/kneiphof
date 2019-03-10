@@ -16,7 +16,7 @@ type dietType = 'predator' | 'herbivore' | 'omnivorous'
 class Mammal {
     public id: string = generateId('Mammal')
     private calories: number = 2000
-    protected unbindEvent: any
+    protected eventUnBinders: Array<any> = []
 
     constructor(protected name: string,
                 private species: string,
@@ -37,7 +37,7 @@ class Mammal {
 
         this.addInStorage()
 
-        this.unbindEvent = eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this))
+        this.eventUnBinders.push(eventBus.on(EVENTS.CUSTOM.GLOBAL_CLOCK.HOUR_PASSED, this.controlCalories.bind(this)))
     }
     
     protected addInStorage () {
@@ -85,11 +85,17 @@ class Mammal {
     }
 
     protected die() {
-        this.unbindEvent()
+        this.unbindEvents()
         
         removeFromStorage(_BEINGS_STORE_[this.species], this)
 
         console.log(`${this.name} the ${this.species} is dead`)
+    }
+    
+    protected unbindEvents () {
+        this.eventUnBinders.forEach(unBinder => {
+            unBinder()
+        })
     }
 
     static createDog(name: string) {
